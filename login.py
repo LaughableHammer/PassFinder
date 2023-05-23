@@ -1,38 +1,57 @@
 import customtkinter as ctk
+from customtkinter import ttk
 import sqlite3
 import hashlib
 
-# User interface
-
-ctk.set_appearance_mode("System")                                                 # Dark and light mode based on system settings
-ctk.set_default_color_theme("blue")                                               # Colour theme to blue
-
-root = ctk.CTk()
-root.geometry("800x500")
-root.title("PassFinder")
-
-frame = ctk.CTkFrame(master=root)
-frame.pack(pady=40, padx=60, fill="both", expand=True)                            # Padding
-
-label = ctk.CTkLabel(master=frame, text="Login System", font=("Aria ", 24))       # Heading
-label.pack(pady=12, padx=10)
-
-UsernameEntry = ctk.CTkEntry(master=frame, placeholder_text="Username")           #Username Entry Field
-UsernameEntry.pack(pady=12, padx=10)
-
-PasswordEntry = ctk.CTkEntry(master=frame, placeholder_text="Password", show="*") #Password Entry Field
-PasswordEntry.pack(pady=12, padx=10)
-
-def Login():                                                                      # Login logic
-    Username = UsernameEntry.get()
-    Password = PasswordEntry.get()
-   #print("Hello, you username is " + Username + " and your password is " + Password + ".")  <- Debug Purposes
-
-     
-
-   # Made with reference to -> https://www.youtube.com/watch?v=3NEzo3CfbPg&t=318s
-
-button = ctk.CTkButton(master=frame, text="Login", command=Login)                 # Login Button
-button.pack(pady=12, padx=10)
-
-root.mainloop()
+class PassFinder:
+    def __init__(self):
+        ctk.set_appearance_mode("System")
+        ctk.set_default_color_theme("blue")
+        
+        self.root = ctk.CTk()
+        self.root.geometry("800x500")
+        self.root.title("PassFinder")
+        
+        self.frame = ctk.CTkFrame(master=self.root, corner_radius=15)
+        self.frame.pack(pady=40, padx=60, fill="both", expand=True)
+        
+        self.label = ctk.CTkLabel(master=self.frame, text="Login System", font=("Arial", 24))
+        self.label.pack(pady=12, padx=10)
+        
+        self.UsernameEntry = ctk.CTkEntry(master=self.frame, placeholder_text="Username")
+        self.UsernameEntry.pack(pady=12, padx=10)
+        
+        self.PasswordEntry = ctk.CTkEntry(master=self.frame, placeholder_text="Password", show="*")
+        self.PasswordEntry.pack(pady=12, padx=10)
+        
+        self.button = ctk.CTkButton(master=self.frame, text="Login", command=self.login)
+        self.button.pack(pady=12, padx=10)
+        
+        self.canvas = ctk.CTkCanvas(master=self.frame, height=1)
+        self.canvas.pack(fill='x', padx=10, pady=10)
+        LineLength = int(self.frame.winfo_width() * 0.5)
+        self.canvas.create_line(0, 1, LineLength, 1, fill='black')
+        
+        self.root.mainloop()
+    
+    def login(self):
+        username = self.UsernameEntry.get()
+        password = self.PasswordEntry.get()
+        
+        conn = sqlite3.connect("userdata.db")
+        cur = conn.cursor()
+        
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS userdata (
+            id INTEGER PRIMARY KEY,
+            username VARCHAR(255) NOT NULL,
+            password VARCHAR(255) NOT NULL
+        )
+        """)
+        
+        username_in, password_in = username, password
+        
+        # Additional login logic can be added here
+        
+if __name__ == '__main__':
+    pass_finder = PassFinder()
