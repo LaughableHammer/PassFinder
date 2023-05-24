@@ -1,3 +1,5 @@
+# inspiration from https://www.tutorialspoint.com/cryptography_with_python/cryptography_with_python_caesar_cipher.htm
+
 class CaesarCipher:
     def __init__(self, shift):
         self.shift = shift
@@ -14,9 +16,10 @@ class CaesarCipher:
         for char in plaintext: #loop through each character and encrypt it
             encrypted_char = self.shift_character(char)
             encrypted_text += encrypted_char
+        print(encrypted_text)
         return encrypted_text # return final value
 
 
 if __name__ == "__main__":
     encryption = CaesarCipher(7)
-    encryption.encrypt()
+    encryption.encrypt("Kushfsdahfjsdaf")

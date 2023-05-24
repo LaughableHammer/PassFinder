@@ -24,7 +24,7 @@ class PassFinder:
         self.PasswordEntry = ctk.CTkEntry(master=self.frame, placeholder_text="Password", show="*")
         self.PasswordEntry.pack(pady=12, padx=10)
         
-        self.button = ctk.CTkButton(master=self.frame, text="Login", command=self.login)
+        self.button = ctk.CTkButton(master=self.frame, text="Login")
         self.button.pack(pady=12, padx=10)
         
         self.canvas = ctk.CTkCanvas(master=self.frame, height=1)

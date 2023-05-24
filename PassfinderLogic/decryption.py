@@ -1,3 +1,5 @@
+# inspiration from https://www.tutorialspoint.com/cryptography_with_python/cryptography_with_python_caesar_cipher.htm
+
 class CaesarCipher:
     def __init__(self, shift):
         self.shift = shift
@@ -15,9 +17,10 @@ class CaesarCipher:
         for char in ciphertext: # iterate through each character
             decrypted_char = self.shift_character(char, reverse=True) # does same as shift character in encryption however reverses it
             decrypted_text += decrypted_char # add decrypted character to new string
+        print(decrypted_text)
         return decrypted_text
 
 
 if __name__ == "__main__":
     decryption = CaesarCipher(7)
-    decryption.decrypt()
+    decryption.decrypt("sajlfksdjalfasd")
