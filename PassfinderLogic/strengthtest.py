@@ -25,6 +25,8 @@ class PasswordStrengthTest:  #provide a rating for an inputted password
         elif length_password > 9:
             self.score += 50
 
+        # Used https://www.geeksforgeeks.org/password-validation-in-python/ for regex help
+
         if re.search(r"\d", password): # uses REGEX to loop for numbers
             self.score += 10
 

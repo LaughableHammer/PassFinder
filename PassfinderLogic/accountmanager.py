@@ -5,12 +5,12 @@ import hashlib
 
 class AccountManager:
     def __init__(self):
-        self.conn = sqlite3.connect("TextFiles/userdata.db")
+        self.conn = sqlite3.connect("TextFiles/userlogindata.db")
         self.cur = self.conn.cursor()
 
         # Create database if it doesn't already exist
         self.cur.execute("""     
-            CREATE TABLE IF NOT EXISTS userdata (
+            CREATE TABLE IF NOT EXISTS userlogindata (
                 id INTEGER PRIMARY KEY,
                 username VARCHAR(255) NOT NULL,
                 password VARCHAR(255) NOT NULL
