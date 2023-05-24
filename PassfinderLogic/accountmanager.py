@@ -21,7 +21,7 @@ class AccountManager:
     def create_account(self, username: str, password: str) -> bool: #Get username, password and hash
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         #Store hashed password in database
-        self.cur.execute("INSERT INTO userdata (username, password) VALUES (?, ?)", (username, hashed_password))
+        self.cur.execute("INSERT INTO userlogindata (username, password) VALUES (?, ?)", (username, hashed_password))
         self.conn.commit()
 
         return True
@@ -29,7 +29,7 @@ class AccountManager:
     def login(self, username: str, password: str) -> bool: #Get username, password and then hash
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         #Get the user details from database
-        self.cur.execute("SELECT * FROM userdata WHERE username = ? AND password = ?", (username, hashed_password))
+        self.cur.execute("SELECT * FROM userlogindata WHERE username = ? AND password = ?", (username, hashed_password))
         user = self.cur.fetchone()
         #If user details exist and if they don't
 
