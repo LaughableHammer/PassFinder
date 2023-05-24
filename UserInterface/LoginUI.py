@@ -1,10 +1,12 @@
+from PassfinderLogic import accountmanager
 import customtkinter as ctk
 from PIL import Image
-import sqlite3
-import hashlib
 
-class PassFinder:
+class LoginUI:
     def __init__(self):
+
+        account_manager = accountmanager.AccountManager()
+
         ctk.set_appearance_mode("System")
         ctk.set_default_color_theme("blue")
         
@@ -23,9 +25,21 @@ class PassFinder:
         
         self.PasswordEntry = ctk.CTkEntry(master=self.frame, placeholder_text="Password", show="*")
         self.PasswordEntry.pack(pady=12, padx=10)
-        
-        self.button = ctk.CTkButton(master=self.frame, text="Login")
+
+        print(self.PasswordEntry.get())
+
+        def login():
+            username = self.UsernameEntry.get()
+            password = self.PasswordEntry.get()
+            is_logged_in = account_manager.login(username, password)
+            if is_logged_in:
+                print("Successful")
+            else:
+                print("Unsuccessful")
+
+        self.button = ctk.CTkButton(master=self.frame, text="Login", command=login)
         self.button.pack(pady=12, padx=10)
+
         
         self.canvas = ctk.CTkCanvas(master=self.frame, height=1)
         self.canvas.pack(fill='x', padx=10, pady=10)
@@ -34,5 +48,7 @@ class PassFinder:
         
         self.root.mainloop()
         
-if __name__ == '__main__':
-    pass_finder = PassFinder()
+
+
+def main():
+    login_ui = LoginUI()

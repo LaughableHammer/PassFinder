@@ -18,46 +18,38 @@ class AccountManager:
         """)
         self.conn.commit()
 
-    def create_account(self): #Get username, password and hash
-        username = input("Enter username: ")
-        password = input("Enter password: ")
+    def create_account(self, username: str, password: str) -> bool: #Get username, password and hash
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         #Store hashed password in database
         self.cur.execute("INSERT INTO userdata (username, password) VALUES (?, ?)", (username, hashed_password))
         self.conn.commit()
 
-        print("Account created successfully.")
+        return True
 
-    def login(self): #Get username, password and then hash
-        username = input("Enter username: ")
-        password = input("Enter password: ")
+    def login(self, username: str, password: str) -> bool: #Get username, password and then hash
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         #Get the user details from database
         self.cur.execute("SELECT * FROM userdata WHERE username = ? AND password = ?", (username, hashed_password))
         user = self.cur.fetchone()
         #If user details exist and if they don't
-        if user:
-            print("Login successful.")
-            #Add additional functionality here
-        else:
-            print("Invalid username or password.")
 
+        return bool(user)
 
-if __name__ == '__main__':
-    account_manager = AccountManager()
+# if __name__ == '__main__':
+#     account_manager = AccountManager()
 
-    while True:
-        print("1. Create Account")
-        print("2. Login")
-        print("3. Exit")
+#     while True:
+#         print("1. Create Account")
+#         print("2. Login")
+#         print("3. Exit")
 
-        choice = input("Enter your choice: ")
+#         choice = input("Enter your choice: ")
 
-        if choice == "1":
-            account_manager.create_account()
-        elif choice == "2":
-            account_manager.login()
-        elif choice == "3":
-            break
-        else:
-            print("Invalid choice. Please try again.")
+#         if choice == "1":
+#             account_manager.create_account()
+#         elif choice == "2":
+#             account_manager.login()
+#         elif choice == "3":
+#             break
+#         else:
+#             print("Invalid choice. Please try again.")
