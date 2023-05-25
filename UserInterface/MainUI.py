@@ -1,7 +1,7 @@
 from PassfinderLogic import accountmanager
 import customtkinter as ctk
 from PIL import Image
-from UserInterface import LoginUI2
+from UserInterface import LoginUI
 
 from UserInterface.UI import PassFinder
 
@@ -19,7 +19,7 @@ def mainUI(app: PassFinder):
 
     def logout():
         app.destroy_frames()
-        LoginUI2.loginUI(app)
+        LoginUI.loginUI(app)
 
     button = ctk.CTkButton(master=frame, text="Logout", command=logout)
     button.pack(pady=12, padx=10)

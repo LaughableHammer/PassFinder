@@ -1,5 +1,6 @@
 from PassfinderLogic import accountmanager
 import customtkinter as ctk
+from tkinter import messagebox
 from UserInterface.UI import PassFinder
 from UserInterface import MainUI
 from PIL import Image
@@ -27,7 +28,7 @@ def createAccountUI(app: PassFinder):
             app.destroy_frames()
             MainUI.mainUI(app)
         else:
-            pass # popup saying error
+            messagebox.showerror("Popup", "Account already exists or Password doesn't meet requirements.") # intentionally vague for security purposes
 
     button = ctk.CTkButton(master=frame, text="Create Account", command=create_account)
     button.pack(pady=12, padx=10)

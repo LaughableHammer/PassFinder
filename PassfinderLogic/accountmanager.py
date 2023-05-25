@@ -20,6 +20,15 @@ class AccountManager:
 
     def create_account(self, username: str, password: str) -> bool: #Get username, password and hash
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
+
+        # Check if username already exists in the database
+        self.cur.execute("SELECT COUNT(*) FROM userlogindata WHERE username = ? AND password = ?", (username, hashed_password))
+        result = self.cur.fetchone()[0]
+
+        if result > 0:
+            # Username already exists, return False
+            return False
+        
         #Store hashed password in database
         self.cur.execute("INSERT INTO userlogindata (username, password) VALUES (?, ?)", (username, hashed_password))
         self.conn.commit()
@@ -35,7 +44,7 @@ class AccountManager:
 
         return bool(user)
 
-# if __name__ == '__main__':
+# if __name__ == '__main__':  used for debugging
 #     account_manager = AccountManager()
 
 #     while True:

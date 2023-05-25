@@ -1,4 +1,5 @@
-from UserInterface import UI, LoginUI2 as LoginUI
+from UserInterface import UI
+from UserInterface import LoginUI
 
 def main():
     print("Hello, World!")
