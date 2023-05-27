@@ -12,7 +12,7 @@ class CreateAccountUI(Frame):
         frame.pack(pady=40, padx=60, fill="both", expand=True)
 
         label = ctk.CTkLabel(
-            master=frame, text="Create Account System", font=("Arial", 24)
+            master=frame, text="Register", font=("Arial", 24)
         )
         label.pack(pady=12, padx=10)
 
@@ -21,6 +21,11 @@ class CreateAccountUI(Frame):
 
         PasswordEntry = ctk.CTkEntry(
             master=frame, placeholder_text="Password", show="*"
+        )
+        PasswordEntry.pack(pady=12, padx=10)
+        
+        PasswordEntry = ctk.CTkEntry(
+            master=frame, placeholder_text="Confirm password", show="*"
         )
         PasswordEntry.pack(pady=12, padx=10)
 

@@ -3,8 +3,7 @@ from UserInterface import LoginUI
 
 
 def main():
-    print("Hello, World!")
-
+    
     app = UI.PassFinder()
     app.goto(LoginUI.LoginUI())
 
