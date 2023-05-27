@@ -1,7 +1,15 @@
+from dataclasses import dataclass
 import sqlite3
 import hashlib
 
 # Used https://www.youtube.com/watch?v=3NEzo3CfbPg for inspiration
+
+
+@dataclass
+class User:
+    user_id: int
+    username: str
+    password: str
 
 
 class AccountManager:
@@ -20,6 +28,8 @@ class AccountManager:
         """
         )
         self.conn.commit()
+
+        self.user: User | None = None
 
     # Creates an account for a new user
     # Each username and password combination must be unique
@@ -71,9 +81,17 @@ class AccountManager:
             (username, hashed_password),
         )
         user = self.cur.fetchone()
-        # If user details exist and if they don't
 
+        if user:
+            user_id, username, password = user
+            self.user = User(user_id, username, password)
+
+        # If user details exist and if they don't
         return bool(user)
+
+    def logout(self) -> bool:
+        self.user = None
+
 
 # if __name__ == '__main__':  used for debugging
 #     account_manager = AccountManager()

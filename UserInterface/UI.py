@@ -20,3 +20,13 @@ class PassFinder:
     def destroy_frames(self):
         for frame in self.root.winfo_children():
             frame.destroy()
+
+    def goto(self, frame: "Frame") -> None:
+        self.destroy_frames()
+        frame.frame(self)
+
+
+class Frame(ABC):
+    @abstractmethod
+    def frame(self, app: PassFinder) -> None:
+        ...

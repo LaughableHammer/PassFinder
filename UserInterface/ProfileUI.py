@@ -1,16 +1,23 @@
 from PassfinderLogic import accountmanager
 import customtkinter as ctk
 from PIL import Image
-from UserInterface import LoginUI, ProfileUI
+from UserInterface import MainUI, LoginUI
 from UserInterface.UI import Frame, PassFinder
 
 
-class MainUI(Frame):
+class ProfileUI(Frame):
     def frame(self, app: PassFinder):
+        if not app.account_manager.user:
+            app.goto(LoginUI.LoginUI())
+
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
         frame.pack(pady=40, padx=60, fill="both", expand=True)
 
-        label = ctk.CTkLabel(master=frame, text="Main System", font=("Arial", 24))
+        label = ctk.CTkLabel(
+            master=frame,
+            text="Profile System - " + app.account_manager.user.username,
+            font=("Arial", 24),
+        )
         label.pack(pady=12, padx=10)
 
         canvas = ctk.CTkCanvas(master=frame, height=1)
@@ -18,15 +25,6 @@ class MainUI(Frame):
         canvas.create_line(0, 1, int(frame.winfo_width() * 0.5), 1, fill="black")
 
         button = ctk.CTkButton(
-            master=frame,
-            text="Profile",
-            command=lambda: app.goto(ProfileUI.ProfileUI()),
+            master=frame, text="Back", command=lambda: app.goto(MainUI.MainUI())
         )
-        button.pack(pady=12, padx=10)
-
-        def logout():
-            app.account_manager.logout()
-            app.goto(LoginUI.LoginUI())
-
-        button = ctk.CTkButton(master=frame, text="Logout", command=logout)
         button.pack(pady=12, padx=10)
