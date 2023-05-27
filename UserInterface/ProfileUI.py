@@ -16,9 +16,9 @@ class ProfileUI(Frame):
         label = ctk.CTkLabel(
             master=frame,
             text="Profile System - " + app.account_manager.user.username,
-            font=("Arial", 24),
+            font=("Helvetica", 28),
         )
-        label.pack(pady=12, padx=10)
+        label.pack(pady=(15, 3), padx=10)
 
         canvas = ctk.CTkCanvas(master=frame, height=1)
         canvas.pack(fill="x", padx=10, pady=10)

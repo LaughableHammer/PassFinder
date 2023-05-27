@@ -15,10 +15,12 @@ class LoginUI(Frame):
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
         frame.pack(pady=40, padx=60, fill="both", expand=True)
 
+        label = ctk.CTkLabel(master=frame, text="Login", font=("Helvetica", 28))   # text at the top
+        label.pack(pady=(15, 3), padx=10)
 
-        label = ctk.CTkLabel(master=frame, text="Login", font=("Arial", 24))   # text at the top
-        label.pack(pady=12, padx=10)
-
+        canvas = ctk.CTkCanvas(master=frame, height=1) # separator line
+        canvas.pack(fill="x", padx=10, pady=10)
+        canvas.create_line(0, 1, int(frame.winfo_width() * 0.5), 1, fill="black")
 
         username_entry = ctk.CTkEntry(master=frame, placeholder_text="Username") # username text box
         username_entry.pack(pady=12, padx=10)
@@ -29,9 +31,9 @@ class LoginUI(Frame):
 
         def login():  # verify creditials in account manager python file
 
-            username = UsernameEntry.get()
-
+            username = username_entry.get()
             password = password_entry.get()
+            
             is_logged_in = app.account_manager.login(username, password)
 
             if is_logged_in:

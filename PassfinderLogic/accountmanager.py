@@ -39,9 +39,7 @@ class AccountManager:
     # Parameter -> password - the password of the account being created
     #
     # Returns -> a boolean describing whether the account was created or not
-    def create_account(
-        self, username: str, password: str
-    ) -> bool:  # Get username, password as a string
+    def create_account(self, username: str, password: str) -> bool:  # Get username, password as a string
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
         # Check if username already exists in the database
@@ -71,9 +69,7 @@ class AccountManager:
     #
     # Returns -> a boolean describing whether the user is exists or not
 
-    def login(
-        self, username: str, password: str
-    ) -> bool:  # Get username, password and then hash
+    def login(self, username: str, password: str) -> bool:  # Get username, password and then hash
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         # Get the user details from database
         self.cur.execute(

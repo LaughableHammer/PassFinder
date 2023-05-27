@@ -10,8 +10,8 @@ class MainUI(Frame):
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
         frame.pack(pady=40, padx=60, fill="both", expand=True)
 
-        label = ctk.CTkLabel(master=frame, text="Main System", font=("Arial", 24))
-        label.pack(pady=12, padx=10)
+        label = ctk.CTkLabel(master=frame, text="Dashboard", font=("Helvetica", 28))
+        label.pack(pady=(15, 3), padx=10)
 
         canvas = ctk.CTkCanvas(master=frame, height=1)
         canvas.pack(fill="x", padx=10, pady=10)
