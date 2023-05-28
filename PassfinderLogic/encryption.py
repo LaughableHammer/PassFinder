@@ -1,9 +1,9 @@
 # inspiration from https://www.tutorialspoint.com/cryptography_with_python/cryptography_with_python_caesar_cipher.htm
 
 
-class CaesarCipher:
+class Encrypt:
     def __init__(
-        self, shift
+        self, shift, plaintext
     ):  # takes in a param 'shift' which tells code how much to shift each character by
         self.shift = shift
 

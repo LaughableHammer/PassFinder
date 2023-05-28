@@ -9,13 +9,12 @@ class PassFinder:
     def __init__(self):
         ctk.set_appearance_mode("System")
         ctk.set_default_color_theme("blue")
-        
+        ctk.set_widget_scaling(1.1)
 
         self.root = ctk.CTk()
         self.root.geometry("800x500")
         self.root.title("PassFinder")
-        self.root.minsize(400, 400)
-
+        self.root.minsize(400, 450)
         self.account_manager = AccountManager()
 
     def destroy_frames(self):

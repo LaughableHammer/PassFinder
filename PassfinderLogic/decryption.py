@@ -1,7 +1,7 @@
 # inspiration from https://www.tutorialspoint.com/cryptography_with_python/cryptography_with_python_caesar_cipher.htm
 
 
-class CaesarCipher:
+class Decrypt:
     def __init__(self, shift):
         self.shift = shift
 

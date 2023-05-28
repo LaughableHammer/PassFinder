@@ -13,7 +13,7 @@ class LoginUI(Frame):
     def frame(self, app: PassFinder):
 
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
-        frame.pack(pady=40, padx=60, fill="both", expand=True)
+        frame.pack(pady=40, padx=50, fill="both", expand=True)
 
         label = ctk.CTkLabel(master=frame, text="Login", font=("Helvetica", 28))   # text at the top
         label.pack(pady=(15, 3), padx=10)
@@ -44,9 +44,6 @@ class LoginUI(Frame):
 
         button = ctk.CTkButton(master=frame, text="Login", command=login)
         button.pack(pady=(12, 4), padx=10)
-
-        # image = Image.open('Images\abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpeg')
-        # plus_image = ImageTk.PhotoImage(image)
         
         create_account_label = ctk.CTkLabel(master=frame, text="OR")
         create_account_label.pack(pady=0.8)

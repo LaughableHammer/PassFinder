@@ -1,7 +1,7 @@
 from PassfinderLogic import accountmanager
 import customtkinter as ctk
 from PIL import Image
-from UserInterface import LoginUI, ProfileUI
+from UserInterface import LoginUI, ProfileUI, StorePasswordUI
 from UserInterface.UI import Frame, PassFinder
 
 
@@ -23,6 +23,9 @@ class MainUI(Frame):
             command=lambda: app.goto(ProfileUI.ProfileUI()),
         )
         button.pack(pady=12, padx=10)
+
+        button = ctk.CTkButton(master=frame, text="Store Passwords", command=lambda: app.goto(CreateAccountUI.CreateAccountUI()))
+        button.pack(pady=(4), padx=10)
 
         def logout():
             app.account_manager.logout()

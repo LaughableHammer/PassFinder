@@ -1,12 +1,4 @@
-import customtkinter as ctk
-import tkinter as tk
-
-from PassfinderLogic import accountmanager
-from UserInterface.UI import Frame, PassFinder
-from UserInterface import MainUI, LoginUI, ProfileUI
-from PIL import Image, ImageTk
-
-class CreateAccountUI(Frame):
+class StorePasswordUI(Frame):
     def frame(self, app: PassFinder):
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
         frame.pack(pady=40, padx=60, fill="both", expand=True)
