@@ -2,7 +2,7 @@
 
 
 class Decrypt:
-    def __init__(self, shift):
+    def __init__(self, shift, ciphertext):
         self.shift = shift
 
     # Checks whether the character being decrypted is in the alphabet
@@ -45,6 +45,6 @@ class Decrypt:
         return decrypted_text  # return decrypted ciphertext
 
 
-if __name__ == "__main__":
-    decryption = CaesarCipher(7) # 7 is the 'key'
-    decryption.decrypt("Rbzomzkhomqzkhm")
+# if __name__ == "__main__":
+#     decryption = CaesarCipher(7) # 7 is the 'key'
+#     decryption.decrypt("Rbzomzkhomqzkhm")

@@ -38,6 +38,6 @@ class StorePassword:
         password = self.cur.fetchone()
 
         if password:
-            return decrypt_password(password[0])  # Replace with decryption algorithm
+            return Decrypt(9, password)  # decrypt
         else:
             return ""

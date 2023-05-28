@@ -41,6 +41,6 @@ class Encrypt:
         return encrypted_text  # return final value
 
 
-if __name__ == "__main__":
-    encryption = CaesarCipher(7)
-    encryption.encrypt("Kushfsdahfjsdaf")
+# if __name__ == "__main__":
+#     encryption = CaesarCipher(7)
+#     encryption.encrypt("Kushfsdahfjsdaf")

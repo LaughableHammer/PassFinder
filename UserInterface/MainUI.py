@@ -24,7 +24,7 @@ class MainUI(Frame):
         )
         button.pack(pady=12, padx=10)
 
-        button = ctk.CTkButton(master=frame, text="Store Passwords", command=lambda: app.goto(CreateAccountUI.CreateAccountUI()))
+        button = ctk.CTkButton(master=frame, text="Store Passwords", command=lambda: app.goto(StorePasswordUI.StorePasswordUI))
         button.pack(pady=(4), padx=10)
 
         def logout():
