@@ -2,6 +2,9 @@ import sqlite3
 import encryption
 import decryption
 
+from encryption import Encrypt
+from decryption import Decrypt
+
 class StorePassword:
     def __init__(self):
         self.conn = sqlite3.connect("TextFiles/Passwords.db")  # Connects to DB
@@ -12,16 +15,18 @@ class StorePassword:
         self.cur.execute(
             """     
             CREATE TABLE IF NOT EXISTS Passwords (
-                id int NOT NULL,
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                username VARCHAR(255) NOT NULL,
                 app_name VARCHAR(255) NOT NULL,
-                stored_password VARCHAR(255),
-                PRIMARY KEY (id)
+                stored_password VARCHAR(255)
             )
         """
         )
         self.conn.commit()
-    
-    def select_all_tasks(self): # for debugging from-> https://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/
+
+    def select_all_tasks(
+        self,
+    ):  # for debugging from-> https://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/
         """
         Query all rows in the Passwords table
         :param conn: the Connection object
@@ -35,21 +40,20 @@ class StorePassword:
         for row in rows:
             print(row)
 
+    def save_password(self, username: str, app_name: str, password: str) -> None:
+        encryptor = Encrypt(9)  # Create an instance of Encrypt with shift value 9 and plaintext password
+        stored_password = encryptor.encrypt(password)  # Encrypt the password using the encrypt method
 
-    def save_password(self, id: int, app_name: str, password: str) -> None:
-        stored_password = str(password)#encryption.Encrypt(9, password) #encrypt password
-        
         self.cur.execute(
-            "INSERT INTO Passwords (id, app_name, stored_password) VALUES (?, ?, ?)",
-            (int(id), str(app_name), str(stored_password)),
+            "INSERT INTO Passwords (username, app_name, stored_password) VALUES (?, ?, ?)",
+            (username, str(app_name), str(stored_password)),
         )
         self.conn.commit()
-        self.conn.close()
-    
-    def get_password(self, id: int, app_name: str) -> str:
+
+    def get_password(self, username: str, app_name: str) -> str:
         self.cur.execute(
-            "SELECT stored_password FROM Passwords WHERE id = ? AND app_name = ?",
-            (id, app_name),
+            "SELECT stored_password FROM Passwords WHERE username = ? AND app_name = ?",
+            (username, app_name),
         )
         password = self.cur.fetchone()
 
@@ -57,8 +61,9 @@ class StorePassword:
             return decryption.Decrypt(9, password)  # decrypt
         else:
             return ""
-        
+
+
 if __name__ == "__main__":
     StorePassword = StorePassword()
+    StorePassword.save_password('david', 'ok', 'so it workstwice in a row')
     StorePassword.select_all_tasks()
-    #StorePassword.save_password(8, 'Microsoft', '.windows43')
