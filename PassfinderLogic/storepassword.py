@@ -58,7 +58,8 @@ class StorePassword:
         password = self.cur.fetchone()
 
         if password:
-            return decryption.Decrypt(9, password)  # decrypt
+            decryptor = Decrypt(9)  # Create an instance of Encrypt with shift value 9 and plaintext password
+            return decryptor.decrypt(password)  # Encrypt the password using the encrypt method
         else:
             return ""
 
