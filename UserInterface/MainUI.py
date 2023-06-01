@@ -8,7 +8,7 @@ from UserInterface.UI import Frame, PassFinder
 class MainUI(Frame):
     def frame(self, app: PassFinder):
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
-        frame.pack(pady=40, padx=60, fill="both", expand=True)
+        frame.pack(pady=40, padx=50, fill="both", expand=True)
 
         label = ctk.CTkLabel(master=frame, text="Dashboard", font=("Helvetica", 28))
         label.pack(pady=(15, 3), padx=10)

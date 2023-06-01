@@ -1,9 +1,7 @@
 import sqlite3
-import encryption
-import decryption
 
-from encryption import Encrypt
-from decryption import Decrypt
+from PassfinderLogic.encryption import Encrypt
+from PassfinderLogic.decryption import Decrypt
 
 class StorePassword:
     def __init__(self):
@@ -63,8 +61,8 @@ class StorePassword:
         else:
             return ""
 
-
-if __name__ == "__main__":
-    StorePassword = StorePassword()
-    StorePassword.save_password('david', 'ok', 'so it workstwice in a row')
-    StorePassword.select_all_tasks()
+# if __name__ == "__main__":
+#     StorePassword = StorePassword()
+#     StorePassword.save_password('david', 'ok', 'so it workstwice in a row')
+#     StorePassword.select_all_tasks()
+#     print(StorePassword.get_password('david', 'ok'))

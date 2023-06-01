@@ -1,5 +1,5 @@
-from UserInterface import UI
-from UserInterface import LoginUI
+from UserInterface import UI, LoginUI
+
 
 
 def main():

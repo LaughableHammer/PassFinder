@@ -2,7 +2,7 @@
 
 
 class Decrypt:
-    def __init__(self, shift, ciphertext):
+    def __init__(self, shift):
         self.shift = shift
 
     # Checks whether the character being decrypted is in the alphabet
