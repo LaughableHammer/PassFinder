@@ -1,10 +1,10 @@
-from UserInterface import UI, LoginUI
+from UserInterface import *
 
 
 
 def main():
     
-    app = UI.PassFinder()
+    app = PassFinder()
     app.goto(LoginUI.LoginUI())
 
     app.root.mainloop()
