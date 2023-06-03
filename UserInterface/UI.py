@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import customtkinter as ctk
 import tkinter as tk
 from PassfinderLogic.accountmanager import AccountManager
+from PassfinderLogic import *
 from PIL import Image, ImageTk
 
 

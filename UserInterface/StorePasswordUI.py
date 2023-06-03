@@ -1,5 +1,6 @@
 from PassfinderLogic import storepassword
-import customtkinter as ctk
+# import customtkinter as ctk
+# import tkinter as tk
 from UserInterface import LoginUI, ProfileUI, UI, MainUI
 from UserInterface.UI import Frame, PassFinder
 
@@ -16,20 +17,28 @@ class StorePasswordUI(Frame):
         canvas.pack(fill="x", padx=10, pady=10)
         canvas.create_line(0, 1, int(frame.winfo_width() * 0.5), 1, fill="black")
 
-        app_name = ctk.CTkEntry(master=frame, placeholder_text="App Name") # username text box
+        app_name = ctk.CTkEntry(master=frame, placeholder_text="Application Name") # app name text box
         app_name.pack(pady=12, padx=10)
 
-        app_password = ctk.CTkEntry(master=frame, placeholder_text="Password", show="*") # password textbox
+        app_password = ctk.CTkEntry(master=frame, placeholder_text="Application Password", show="*") # app password textbox
         app_password.pack(pady=12, padx=10)
 
         def store_password():
-            app_name = app_name.get()
-            app_password = app_password.get()
-            username = LoginUI.LoginUI.username_entry.get()
-            save_password = app.storepassword.save_password()
+            name = app_name.get()
+            password = app_password.get()
+            
+            with open('TextFiles/username.txt', 'r') as file:
+                username = file.read()
+            
+            password_saved = storepassword.StorePassword().save_password(username, name, password)
 
-        button = ctk.CTkButton(master=frame, text="Store New Password", command=lambda: app.goto(LoginUI().LoginUI()))
-        button.pack(pady=(4), padx=10)
+            if password_saved:
+                tk.messagebox.showinfo("Password Saved", "Password has been saved.")
+            else:  # popup saying password didn't save
+                tk.messagebox.showerror("Error", "Password unable to be saved. Please try again.")  # intentionally vague for security purposes
+
+        button = ctk.CTkButton(master=frame, text="Store New Password", command=store_password())
+        button.pack(pady=10, padx=10)
 
         back_button = ctk.CTkButton(frame, text='Go Back', command=lambda: app.goto(MainUI.MainUI()))
-        back_button.pack(pady=4, padx=10)
+        back_button.pack(pady=10, padx=10)
