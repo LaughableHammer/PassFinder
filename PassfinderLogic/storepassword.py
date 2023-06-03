@@ -46,7 +46,10 @@ class StorePassword:
             "INSERT INTO Passwords (username, app_name, stored_password) VALUES (?, ?, ?)",
             (username, str(app_name), str(stored_password)),
         )
+        save = self.cur.fetchone()
         self.conn.commit()
+        
+        return True
 
     def get_password(self, username: str, app_name: str) -> str:
         self.cur.execute(

@@ -1,6 +1,6 @@
 from PassfinderLogic import storepassword
-# import customtkinter as ctk
-# import tkinter as tk
+import customtkinter as ctk
+import tkinter as tk
 from UserInterface import LoginUI, ProfileUI, UI, MainUI
 from UserInterface.UI import Frame, PassFinder
 
@@ -34,10 +34,12 @@ class StorePasswordUI(Frame):
 
             if password_saved:
                 tk.messagebox.showinfo("Password Saved", "Password has been saved.")
+                app_name.delete(0, 'end')
+                app_password.delete(0, 'end')
             else:  # popup saying password didn't save
                 tk.messagebox.showerror("Error", "Password unable to be saved. Please try again.")  # intentionally vague for security purposes
 
-        button = ctk.CTkButton(master=frame, text="Store New Password", command=store_password())
+        button = ctk.CTkButton(master=frame, text="Store New Password", command=store_password)
         button.pack(pady=10, padx=10)
 
         back_button = ctk.CTkButton(frame, text='Go Back', command=lambda: app.goto(MainUI.MainUI()))
