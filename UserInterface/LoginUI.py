@@ -34,6 +34,9 @@ class LoginUI(Frame):
             username = username_entry.get()
             password = password_entry.get()
             
+            with open('TextFiles/username.txt', 'w') as file:
+                file.write(username)
+
             is_logged_in = app.account_manager.login(username, password)
 
             if is_logged_in:

@@ -1,5 +1,6 @@
 import customtkinter as ctk
 import tkinter as tk
+import re
 
 from PassfinderLogic import accountmanager
 from UserInterface.UI import Frame, PassFinder
@@ -32,16 +33,53 @@ class CreateAccountUI(Frame):
             password = password_entry.get()
             confirm = confirm_password.get()
 
+
+            if re.search(r"\d", password):  # uses REGEX to loop for numbers
+                pass
+            else:
+                tk.messagebox.showinfo("Input Error", "Password needs at least 1 number.")
+                app.goto(CreateAccountUI.CreateAccountUI())
+        
+
+            if re.search(r"\W", password):  # finds symbols and special characters
+                pass
+            else:
+                tk.messagebox.showinfo("Input Error", "Passwords needs at least 1 special character")
+                app.goto(CreateAccountUI.CreateAccountUI()) 
+
+            if re.search(r"[a-z]", password):  # finds lowercase letters
+                pass
+            else:
+                tk.messagebox.showinfo("Input Error", "Password needs at least 1 lowercase letter")
+                app.goto(CreateAccountUI.CreateAccountUI())
+
+            if re.search(r"[A-Z]", password):  # finds uppercase letters
+                pass
+            else:
+                tk.messagebox.showinfo("Input Error", "Password needs at least 1 uppercase letter.")
+                app.goto(CreateAccountUI.CreateAccountUI())
+
             if password != confirm:
                 tk.messagebox.showerror("Input Error", "Passwords do not match. Please try again.")
+                app.goto(CreateAccountUI.CreateAccountUI())
+
+            if len(password) == 0:
+                tk.messagebox.showinfo("Input Error", "Password can\'t be empty")
+                app.goto(CreateAccountUI.CreateAccountUI())
+
+            if len(password) <= 2:
+                tk.messagebox.showerror("Input Error", "Password is too short.")
+                app.goto(CreateAccountUI.CreateAccountUI())
+            if len(password) > 100:
+                tk.messagebox.showerror("Input Error", "Password is too long.")
+                app.goto(CreateAccountUI.CreateAccountUI())
+
+            is_created = app.account_manager.create_account(username, password)
+            if is_created:
+                app.account_manager.login(username, password)
+                app.goto(MainUI.MainUI())
             else:
-                is_created = app.account_manager.create_account(username, password)
-                if is_created:
-                    app.account_manager.login(username, password)
-                    app.goto(MainUI.MainUI())
-                else:
-                    tk.messagebox.showerror("Input Error", "Account already exists or password doesn't meet requirements.")  # intentionally vague for security purposes
-#######need to implement the password requirements feature later########
+                tk.messagebox.showerror("Input Error", "Account already exists.")  # intentionally vague for security purposes
             
             
         button = ctk.CTkButton(master=frame, text="Create Account", command=create_account)
