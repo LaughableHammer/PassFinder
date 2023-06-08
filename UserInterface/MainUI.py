@@ -1,7 +1,7 @@
 from PassfinderLogic import accountmanager  # Import the account manager module
 import customtkinter as ctk  # Import the custom tkinter module
 from PIL import Image  # Import the Image class from the PIL library
-from UserInterface import LoginUI, ProfileUI, StorePasswordUI  # Import UI classes
+from UserInterface import LoginUI, ProfileUI, StorePasswordUI, ViewPasswordsUI  # Import UI classes
 from UserInterface.UI import Frame, PassFinder  # Import Frame and PassFinder classes
 
 class MainUI(Frame):
@@ -28,7 +28,14 @@ class MainUI(Frame):
             text="Store Passwords",
             command=lambda: app.goto(StorePasswordUI.StorePasswordUI()),  # Bind the button click event to navigate to the StorePasswordUI
         )
-        button.pack(pady=(4), padx=10)  # Pack the button with vertical padding
+        button.pack(pady=12, padx=10)  # Pack the button with vertical padding
+
+        button = ctk.CTkButton(
+            master=frame,
+            text="View Passwords",
+            command=lambda: app.goto(ViewPasswordsUI.ViewPasswordsUI()),  # Bind the button click event to navigate to the StorePasswordUI
+        )
+        button.pack(pady=12, padx=10)  # Pack the button with vertical padding
 
         def logout():  # Define a logout function
             app.account_manager.logout()  # Call the logout method of the account manager

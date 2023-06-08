@@ -3,6 +3,7 @@ import sqlite3
 from PassfinderLogic.encryption import Encrypt
 from PassfinderLogic.decryption import Decrypt
 
+
 class StorePassword:
     def __init__(self):
         self.conn = sqlite3.connect("TextFiles/Passwords.db")  # Connects to DB
@@ -39,8 +40,12 @@ class StorePassword:
             print(row)
 
     def save_password(self, username: str, app_name: str, password: str) -> None:
-        encryptor = Encrypt(9)  # Create an instance of Encrypt with shift value 9 and plaintext password
-        stored_password = encryptor.encrypt(password)  # Encrypt the password using the encrypt method
+        encryptor = Encrypt(
+            9
+        )  # Create an instance of Encrypt with shift value 9 and plaintext password
+        stored_password = encryptor.encrypt(
+            password
+        )  # Encrypt the password using the encrypt method
 
         self.cur.execute(
             "INSERT INTO Passwords (username, app_name, stored_password) VALUES (?, ?, ?)",
@@ -48,19 +53,25 @@ class StorePassword:
         )
         save = self.cur.fetchone()
         self.conn.commit()
-        
+
         return True
 
-    def get_password(self, username: str, app_name: str) -> str:
+    def get_password(self, username: str) -> str:
         self.cur.execute(
-            "SELECT stored_password FROM Passwords WHERE username = ? AND app_name = ?",
-            (username, app_name),
+            "SELECT stored_password FROM Passwords WHERE username = ?",
+            (username)
         )
         password = self.cur.fetchone()
 
+        
+
         if password:
-            decryptor = Decrypt(9)  # Create an instance of Encrypt with shift value 9 and plaintext password
-            return decryptor.decrypt(password)  # Encrypt the password using the encrypt method
+            decryptor = Decrypt(
+                9
+            )  # Create an instance of Encrypt with shift value 9 and plaintext password
+            return decryptor.decrypt(
+                password
+            )  # Encrypt the password using the encrypt method
         else:
             return ""
 
