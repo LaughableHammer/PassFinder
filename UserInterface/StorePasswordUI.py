@@ -24,13 +24,13 @@ class StorePasswordUI(Frame):
         app_password.pack(pady=12, padx=10)
 
         def store_password():
-            name = app_name.get()
+            name = app_name.get() # retrieve details from input box
             password = app_password.get()
             
-            with open('TextFiles/username.txt', 'r') as file:
+            with open('TextFiles/username.txt', 'r') as file: # read user username
                 username = file.read()
             
-            password_saved = storepassword.StorePassword().save_password(username, name, password)
+            password_saved = storepassword.StorePassword().save_password(username, name, password) # calls save_password function in storepassword.py
 
             if password_saved:
                 tk.messagebox.showinfo("Password Saved", "Password has been saved.")

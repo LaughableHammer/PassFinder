@@ -58,7 +58,7 @@ class CreateAccountUI(Frame):
             else:
                 tk.messagebox.showinfo("Input Error", "Password needs at least 1 uppercase letter.")
                 app.goto(CreateAccountUI.CreateAccountUI())
-
+            # show errors for different validation statements
             if password != confirm:
                 tk.messagebox.showerror("Input Error", "Passwords do not match. Please try again.")
                 app.goto(CreateAccountUI.CreateAccountUI())
@@ -75,7 +75,7 @@ class CreateAccountUI(Frame):
                 app.goto(CreateAccountUI.CreateAccountUI())
 
             is_created = app.account_manager.create_account(username, password)
-            if is_created:
+            if is_created: # checks if account is made by passing through inputs
                 app.account_manager.login(username, password)
                 app.goto(MainUI.MainUI())
             else:

@@ -57,25 +57,17 @@ class StorePassword:
         return True
 
     def get_password(self, username: str) -> str:
-        self.cur.execute(
-            "SELECT stored_password FROM Passwords WHERE username = ?",
-            (username)
-        )
-        password = self.cur.fetchone()
-
         
+        self.cur.execute("SELECT app_name, stored_password FROM Passwords WHERE username = ?",
+        (username,),
+        )
+        passwords = self.cur.fetchall()
 
-        if password:
-            decryptor = Decrypt(
-                9
-            )  # Create an instance of Encrypt with shift value 9 and plaintext password
-            return decryptor.decrypt(
-                password
-            )  # Encrypt the password using the encrypt method
-        else:
-            return ""
+        decryptor = Decrypt(9)
+        results = [(app_name, decryptor.decrypt(password)) for app_name, password in passwords]
+        return results
 
-# if __name__ == "__main__":
+# if __name__ == "__main__": testing purposes
 #     StorePassword = StorePassword()
 #     StorePassword.save_password('david', 'ok', 'so it workstwice in a row')
 #     StorePassword.select_all_tasks()
