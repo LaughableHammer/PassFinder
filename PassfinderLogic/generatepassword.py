@@ -1,5 +1,5 @@
-import random  # allows generating of random values
-import string  # allows for easy access to arrays containing certain groups of characters that can be individually selected
+import random
+import string 
 
 
 class PasswordGenerator:
@@ -8,12 +8,6 @@ class PasswordGenerator:
         self.include_special = False  # set default values for each variable
         self.include_numbers = False
         self.include_normal = False
-
-    # Allows the user to select what characters they want in their password
-    #
-    # Parameter -> no params
-    #
-    # Returns -> NA
 
     def password_options(self):  # let the user choose what options they want
         while (  # loops until at least 1 category of characters is selected
@@ -75,12 +69,6 @@ class PasswordGenerator:
                     "At least one character type must be included. Please re-enter the details."
                 )
 
-    # Generates a password based on the users preferences from the password_options function
-    #
-    # Parameter -> NA
-    #
-    # Returns -> a password of the users choice of length and character types
-
     def generate_password(self):
         characters = ""
 
@@ -98,11 +86,3 @@ class PasswordGenerator:
             random.choice(characters) for i in range(self.length)
         )  # concatenate all the randomly generated characters from the valid characters
         return password
-
-
-generator = PasswordGenerator()
-generator.password_options()
-
-
-password = generator.generate_password()
-print(password)

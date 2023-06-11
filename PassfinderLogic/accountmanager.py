@@ -31,17 +31,18 @@ class AccountManager:
 
         self.user: User | None = None
 
-    # Creates an account for a new user
-    # Each username and password combination must be unique
-    # Username and password have already been input validated
-    #
-    # Parameter -> username - the username of the account being created
-    # Parameter -> password - the password of the account being created
-    #
-    # Returns -> a boolean describing whether the account was created or not
     def create_account(
         self, username: str, password: str
-    ) -> bool:  # Get username, password as a string
+    ) -> bool:
+        """Allows the creation of accounts
+
+        Args:
+            username (str): takes in the user input for username
+            password (str): takes in the user input for password
+
+        Returns:
+            bool: shows whether account was created or not
+        """
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
         # Check if username already exists in the database
@@ -63,17 +64,18 @@ class AccountManager:
 
         return True
 
-    # Allows the user to login to their account
-    # Username and password have already been input validated
-    #
-    # Parameter -> username - the username of the account being logged into
-    # Parameter -> password - the password of the account being logged into
-    #
-    # Returns -> a boolean describing whether the user is exists or not
-
     def login(
         self, username: str, password: str
-    ) -> bool:  # Get username, password and then hash
+    ) -> bool:
+        """allows logging in to accounts that have previously been created
+
+        Args:
+            username (str): takes in account username from user input
+            password (str): takes in account password from user input
+
+        Returns:
+            bool: describes whether the user details are correct (logs them in)
+        """
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         # Get the user details from database
         self.cur.execute(

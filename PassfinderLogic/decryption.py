@@ -5,15 +5,16 @@ class Decrypt:
     def __init__(self, shift):
         self.shift = shift
 
-    # Checks whether the character being decrypted is in the alphabet
-    # Shifts the ASCII value of the character in the negative direction to the encryption
-    #
-    # Parameter -> char - the character being decrypted
-    # Parameter -> reverse - boolean that just reverses the logic of the encryption algorithm
-    #
-    # Returns -> the character, decrypted
-
     def shift_character(self, char, reverse=False):
+        """shifts each character's ascii value by an amount
+
+        Args:
+            char (an ascii character): the character being shifted
+            reverse (bool, optional): can reverse for encryption. Defaults to False.
+
+        Returns:
+            char: returns the decrypted char
+        """
         if char.isalpha():  # checks if the character is in the alphabet
             case_offset = (
                 ord("a") if char.islower() else ord("A")
@@ -27,14 +28,15 @@ class Decrypt:
             return shifted_char
         return char
 
-    # Creats an empty string for the output
-    # Reverse the encryption on each character individually using the shift_character function
-    #
-    # Parameter -> ciphertext - the ciphered text that needs to be decrypted
-    #
-    # Returns -> the decrypted version of the ciphertext input
-
     def decrypt(self, ciphertext):
+        """uses shift_character to decrypt all letters of a string
+
+        Args:
+            ciphertext (string): the string to be decrypted
+
+        Returns:
+            decrypted_text: the input but decrypted
+        """
         decrypted_text = ""  # final result to be returned
         for char in ciphertext:  # iterate through each character
             decrypted_char = self.shift_character(
@@ -43,8 +45,3 @@ class Decrypt:
             decrypted_text += decrypted_char  # add decrypted character to new string
         print(decrypted_text)
         return decrypted_text  # return decrypted ciphertext
-
-
-# if __name__ == "__main__":
-#     decryption = CaesarCipher(7) # 7 is the 'key'
-#     decryption.decrypt("Rbzomzkhomqzkhm")

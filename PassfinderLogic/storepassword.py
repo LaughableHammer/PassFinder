@@ -24,13 +24,8 @@ class StorePassword:
         self.conn.commit()
 
     def select_all_tasks(
-        self,
-    ):  # for debugging from-> https://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/
-        """
-        Query all rows in the Passwords table
-        :param conn: the Connection object
-        :return:
-        """
+        self,):  # for debugging from-> https://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/
+        #selects everything in the database, only used for debugging
         cur = self.conn.cursor()
         cur.execute("SELECT * FROM Passwords")
 
@@ -40,6 +35,16 @@ class StorePassword:
             print(row)
 
     def save_password(self, username: str, app_name: str, password: str) -> None:
+        """saves a password for a user
+
+        Args:
+            username (str): the user username, this is stored in a file when the user logs in
+            app_name (str): the name of the app of the password being stored
+            password (str): the password of the app being stored
+
+        Returns:
+            bool: describes whether the password was successfully saved
+        """
         encryptor = Encrypt(
             9
         )  # Create an instance of Encrypt with shift value 9 and plaintext password
@@ -57,6 +62,14 @@ class StorePassword:
         return True
 
     def get_password(self, username: str) -> str:
+        """uses the username to get all the passwords from the database
+
+        Args:
+            username (str): the username of the user, pre-stored in a file to prevent malicious behaviour
+
+        Returns:
+            results (str): all the app names and their respective passwords
+        """
         self.cur.execute(
             "SELECT app_name, stored_password FROM Passwords WHERE username = ?",
             (username,),
@@ -68,10 +81,3 @@ class StorePassword:
             (app_name, decryptor.decrypt(password)) for app_name, password in passwords
         ]
         return results
-
-
-# if __name__ == "__main__": testing purposes
-#     StorePassword = StorePassword()
-#     StorePassword.save_password('david', 'ok', 'so it workstwice in a row')
-#     StorePassword.select_all_tasks()
-#     print(StorePassword.get_password('david', 'ok'))
