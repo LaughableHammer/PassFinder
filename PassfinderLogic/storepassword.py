@@ -57,15 +57,18 @@ class StorePassword:
         return True
 
     def get_password(self, username: str) -> str:
-        
-        self.cur.execute("SELECT app_name, stored_password FROM Passwords WHERE username = ?",
-        (username,),
+        self.cur.execute(
+            "SELECT app_name, stored_password FROM Passwords WHERE username = ?",
+            (username,),
         )
         passwords = self.cur.fetchall()
 
         decryptor = Decrypt(9)
-        results = [(app_name, decryptor.decrypt(password)) for app_name, password in passwords]
+        results = [
+            (app_name, decryptor.decrypt(password)) for app_name, password in passwords
+        ]
         return results
+
 
 # if __name__ == "__main__": testing purposes
 #     StorePassword = StorePassword()

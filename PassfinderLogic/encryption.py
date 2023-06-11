@@ -3,7 +3,8 @@
 
 class Encrypt:
     def __init__(
-        self, shift):  # takes in a param 'shift' which tells code how much to shift each character by
+        self, shift
+    ):  # takes in a param 'shift' which tells code how much to shift each character by
         self.shift = shift
 
     # Checks whether the character being encrypted is in the alphabet
