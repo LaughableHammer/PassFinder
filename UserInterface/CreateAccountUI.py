@@ -96,7 +96,7 @@ class CreateAccountUI(Frame):
                 app.goto(MainUI.MainUI())
             else:
                 tk.messagebox.showerror(
-                    "Input Error", "Account already exists."
+                    "Input Error", "Username unavailable."
                 )  # intentionally vague for security purposes
 
         button = ctk.CTkButton(

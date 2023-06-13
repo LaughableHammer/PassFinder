@@ -47,7 +47,7 @@ class AccountManager:
 
         # Check if username already exists in the database
         self.cur.execute(
-            "SELECT COUNT(*) FROM userlogindata WHERE username = ? AND password = ?",  # SQL statement checks whether the username and password already exist
+            "SELECT COUNT(*) FROM userlogindata WHERE username = ? OR password = ?",  # SQL statement checks whether the username and password already exist
             (username, hashed_password),
         )
         result = self.cur.fetchone()[0]  # fetches the results of the SQL query
