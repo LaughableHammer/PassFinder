@@ -38,6 +38,12 @@ class CreateAccountUI(Frame):
             password = password_entry.get()
             confirm = confirm_password.get()
 
+            if len(username) > 25:
+                tk.messagebox.showerror(
+                    "Error", "Username can't be longer than 20 characters."
+                )
+                app.goto(CreateAccountUI.CreateAccountUI())
+
             with open("TextFiles/username.txt", "w") as file:
                 file.write(username)
 

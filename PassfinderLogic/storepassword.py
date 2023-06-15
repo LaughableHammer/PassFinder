@@ -81,3 +81,13 @@ class StorePassword:
             (app_name, decryptor.decrypt(password)) for app_name, password in passwords
         ]
         return results
+    
+    def delete_password(self, username: str, app_name: str):
+        self.cur.execute(
+            "DElETE FROM Passwords WHERE username = username, app_name = app_name"
+        )
+        results = [
+            (app_name, decryptor.decrypt(password)) for app_name, password in passwords
+        ]
+        return results
+        

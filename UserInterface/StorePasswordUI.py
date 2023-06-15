@@ -10,28 +10,38 @@ class StorePasswordUI(Frame):
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
         frame.pack(pady=40, padx=50, fill="both", expand=True)
 
+        frame_left = ctk.CTkFrame(master=frame)  # Create a frame
+        frame_left.pack(pady=0, padx=(0,0), fill="both", side="left")
+
+        frame_right = ctk.CTkFrame(master=frame)  # Create a frame
+        frame_right.pack(padx=(10, 0), fill="both", expand=True, side="right")
+
+        ####Left side of the window (saving passwords)####
+
         label = ctk.CTkLabel(
-            master=frame, text="Password Vault", font=("Helvetica", 28)
+            master=frame_left, text="Save Password", font=("Helvetica", 28)
         )
         label.pack(pady=(15, 3), padx=10)
 
-        canvas = ctk.CTkCanvas(master=frame, height=1)
-        canvas.pack(fill="x", padx=10, pady=10)
-        canvas.create_line(0, 1, int(frame.winfo_width() * 0.5), 1, fill="black")
-
         app_name = ctk.CTkEntry(
-            master=frame, placeholder_text="Application Name"
+            master=frame_left, placeholder_text="Application Name"
         )  # app name text box
         app_name.pack(pady=12, padx=10)
 
         app_password = ctk.CTkEntry(
-            master=frame, placeholder_text="Application Password", show="*"
+            master=frame_left, placeholder_text="Application Password", show="*"
         )  # app password textbox
         app_password.pack(pady=12, padx=10)
 
         def store_password():
             name = app_name.get()  # retrieve details from input box
             password = app_password.get()
+
+            if len(name) or len(password) > 50:
+                tk.messagebox.showerror(
+                    "Error", "Please restrict input to 50 characters."
+                )
+                app.goto(StorePasswordUI.StorePasswordUI())
 
             with open("TextFiles/username.txt", "r") as file:  # read user username
                 username = file.read()
@@ -50,11 +60,30 @@ class StorePasswordUI(Frame):
                 )  # intentionally vague for security purposes
 
         button = ctk.CTkButton(
-            master=frame, text="Store New Password", command=store_password
+            master=frame_left, text="Store New Password", command=store_password
         )
         button.pack(pady=10, padx=10)
 
         back_button = ctk.CTkButton(
-            frame, text="Go Back", command=lambda: app.goto(MainUI.MainUI())
+            frame_left, text="Go Back", command=lambda: app.goto(MainUI.MainUI())
         )
         back_button.pack(pady=10, padx=10)
+
+        ####Right side of main (deleting passwords)####
+        label = ctk.CTkLabel(
+            master=frame_right, text="Delete Passwords", font=("Helvetica", 28)
+        )
+        label.pack(pady=(15, 3), padx=10)
+
+        app_name = ctk.CTkEntry( # by making user input the application name, accidental deletions can be prevented
+            master=frame_left, placeholder_text="Application Name"
+        )  # app name text box
+        app_name.pack(pady=12, padx=10)
+
+        # confirm = tk.messagebox.askquestion("Confirm", "Are you sure?")
+        # delete_password = storepassword.StorePassword.delete_password()
+
+        # if confirm:
+        #     app = app_name.get()
+        #     delete_password(username, app) # to be completed
+        

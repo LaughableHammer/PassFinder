@@ -16,6 +16,7 @@ class PassFinder:
         self.root.geometry("800x500")  # window size
         self.root.title("PassFinder")
         self.root.minsize(400, 450)  # minimum window size
+        self.root.resizable(0, 0)
         self.account_manager = AccountManager()
 
     def destroy_frames(self):  # remove all frames open
