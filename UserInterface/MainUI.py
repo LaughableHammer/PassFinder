@@ -6,6 +6,7 @@ from UserInterface import (
     ProfileUI,
     StorePasswordUI,
     ViewPasswordsUI,
+    GeneratePasswordUI,
 )  # Import UI classes
 from UserInterface.UI import Frame, PassFinder
 
@@ -35,6 +36,13 @@ class MainUI(Frame):
             master=frame,
             text="View Passwords",
             command=lambda: app.goto(ViewPasswordsUI.ViewPasswordsUI()),
+        )
+        button.pack(pady=12, padx=5)
+
+        button = ctk.CTkButton(
+            master=frame,
+            text="Generate Password",
+            command=lambda: app.goto(GeneratePasswordUI.GeneratePasswordUI()),
         )
         button.pack(pady=12, padx=5)
 
