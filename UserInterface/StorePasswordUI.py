@@ -33,6 +33,9 @@ class StorePasswordUI(Frame):
         )  # app password textbox
         app_password.pack(pady=12, padx=10)
 
+        with open("TextFiles/username.txt", "r") as file:  # read user username
+            username = file.read()
+
         def store_password():
             name = app_name.get()  # retrieve details from input box
             password = app_password.get()
@@ -42,9 +45,6 @@ class StorePasswordUI(Frame):
                     "Error", "Please restrict input to 50 characters."
                 )
                 app.goto(StorePasswordUI.StorePasswordUI())
-
-            with open("TextFiles/username.txt", "r") as file:  # read user username
-                username = file.read()
 
             password_saved = storepassword.StorePassword().save_password(
                 username, name, password
@@ -74,16 +74,60 @@ class StorePasswordUI(Frame):
             master=frame_right, text="Delete Passwords", font=("Helvetica", 28)
         )
         label.pack(pady=(15, 3), padx=10)
-
+        
         app_name = ctk.CTkEntry( # by making user input the application name, accidental deletions can be prevented
-            master=frame_left, placeholder_text="Application Name"
+            master=frame_right, placeholder_text="Application Name"
         )  # app name text box
         app_name.pack(pady=12, padx=10)
 
-        # confirm = tk.messagebox.askquestion("Confirm", "Are you sure?")
-        # delete_password = storepassword.StorePassword.delete_password()
+        def delete_password():
+            password_to_delete = app_name.get()
 
-        # if confirm:
-        #     app = app_name.get()
-        #     delete_password(username, app) # to be completed
+            confirm = tk.messagebox.askquestion("Confirm", "Are you sure you want to delete the password?")
+            if confirm == "yes":
+                success = storepassword.StorePassword().delete_password(username, password_to_delete)
+                if success:
+                    tk.messagebox.showinfo("Password Deleted", "Password has been deleted.")
+                else:
+                    tk.messagebox.showerror("Error", "Password deletion failed. Please try again.")
+            else:
+                tk.messagebox.showinfo("Deletion Cancelled", "Password deletion has been cancelled.")
+
+            app_name.delete(0, "end")
+
+button = ctk.CTkButton(
+    master=frame_right, text="Delete Password", command=delete_password
+)
+button.pack(pady=10, padx=10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        confirm = tk.messagebox.askquestion("Confirm", "Are you sure?")
+
+        button = ctk.CTkButton(
+            master=frame_right, text="Delete Password", 
+            command=lambda: 
+            
+        )
+        button.pack(pady=10, padx=10)
+
+        password_to_delete = app_name.get()
+        delete_password = storepassword.StorePassword.delete_password()
+
+        delete_password(username, password_to_delete)
+        app_name.delete(0, "end")
+
         
