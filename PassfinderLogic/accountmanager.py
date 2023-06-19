@@ -32,7 +32,9 @@ class AccountManager:
         self.user: User | None = None
 
     def create_account(
-        self, username: str, password: str
+        self,
+        username: str,
+        password: str,
     ) -> bool:
         """Allows the creation of accounts
 
@@ -65,7 +67,9 @@ class AccountManager:
         return True
 
     def login(
-        self, username: str, password: str
+        self,
+        username: str,
+        password: str,
     ) -> bool:
         """allows logging in to accounts that have previously been created
 
@@ -91,7 +95,9 @@ class AccountManager:
         # If user details exist and if they don't
         return bool(user)
 
-    def logout(self) -> bool:
+    def logout(
+        self,
+    ) -> bool:
         self.user = None
 
 

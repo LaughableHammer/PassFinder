@@ -2,10 +2,17 @@
 
 
 class Decrypt:
-    def __init__(self, shift):
+    def __init__(
+        self,
+        shift,
+    ):
         self.shift = shift
 
-    def shift_character(self, char, reverse=False):
+    def shift_character(
+        self,
+        char,
+        reverse=False,
+    ):
         """shifts each character's ascii value by an amount
 
         Args:
@@ -28,7 +35,10 @@ class Decrypt:
             return shifted_char
         return char
 
-    def decrypt(self, ciphertext):
+    def decrypt(
+        self,
+        ciphertext,
+    ):
         """uses shift_character to decrypt all letters of a string
 
         Args:

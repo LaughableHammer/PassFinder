@@ -12,25 +12,60 @@ from UserInterface.UI import Frame, PassFinder
 
 
 class MainUI(Frame):
-    def frame(self, app: PassFinder):
-        frame_main = ctk.CTkFrame(master=app.root, corner_radius=15)  # Create a frame
-        frame_main.pack(pady=40, padx=50, fill="both", expand=True)
+    def frame(
+        self,
+        app: PassFinder,
+    ):
+        frame_main = ctk.CTkFrame(
+            master=app.root,
+            corner_radius=15,
+        )  # Create a frame
+        frame_main.pack(
+            pady=40,
+            padx=50,
+            fill="both",
+            expand=True,
+        )
 
-        frame = ctk.CTkFrame(master=frame_main)  # Create a frame
-        frame.pack(pady=0, padx=(0,0), fill="both", side="left")
+        frame = ctk.CTkFrame(
+            master=frame_main,
+        )  # Create a frame
+        frame.pack(
+            pady=0,
+            padx=(0, 0),
+            fill="both",
+            side="left",
+        )
 
-        frame_right = ctk.CTkFrame(master=frame_main)  # Create a frame
-        frame_right.pack(padx=(10, 0), fill="both", expand=True, side="right")
+        frame_right = ctk.CTkFrame(
+            master=frame_main,
+        )  # Create a frame
+        frame_right.pack(
+            padx=(10, 0),
+            fill="both",
+            expand=True,
+            side="right",
+        )
 
-        label = ctk.CTkLabel(master=frame, text="Dashboard", font=("Helvetica", 28))
-        label.pack(pady=(15, 3), padx=10)
+        label = ctk.CTkLabel(
+            master=frame,
+            text="Dashboard",
+            font=("Helvetica", 28),
+        )
+        label.pack(
+            pady=(15, 3),
+            padx=10,
+        )
 
         button = ctk.CTkButton(
             master=frame,
             text="Store Passwords",
             command=lambda: app.goto(StorePasswordUI.StorePasswordUI()),
         )
-        button.pack(pady=12, padx=5)
+        button.pack(
+            pady=12,
+            padx=5,
+        )
 
         button = ctk.CTkButton(
             master=frame,
@@ -44,7 +79,10 @@ class MainUI(Frame):
             text="Generate Password",
             command=lambda: app.goto(GeneratePasswordUI.GeneratePasswordUI()),
         )
-        button.pack(pady=12, padx=5)
+        button.pack(
+            pady=12,
+            padx=5,
+        )
 
         def logout():  #  Logout function
             app.account_manager.logout()
@@ -55,12 +93,17 @@ class MainUI(Frame):
             text="Profile - " + app.account_manager.user.username,
             font=("Helvetica", 28),
         )
-        label.pack(pady=(15, 3), padx=10)
+        label.pack(
+            pady=(15, 3),
+            padx=10,
+        )
 
         button = ctk.CTkButton(
-            master=frame_right, text="Back", command=lambda: app.goto(MainUI.MainUI())
+            master=frame,
+            text="Logout",
+            command=logout,
         )
-        button.pack(pady=12, padx=10)
-
-        button = ctk.CTkButton(master=frame, text="Logout", command=logout)
-        button.pack(pady=12, padx=5)
+        button.pack(
+            pady=12,
+            padx=5,
+        )

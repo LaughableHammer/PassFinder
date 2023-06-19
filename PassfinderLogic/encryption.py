@@ -7,8 +7,10 @@ class Encrypt:
     ):  # takes in a param 'shift' which tells code how much to shift each character by
         self.shift = shift
 
-
-    def shift_character(self, char):
+    def shift_character(
+        self,
+        char,
+    ):
         """shifts the ascii value of a character by shift value
 
         Args:
@@ -26,8 +28,11 @@ class Encrypt:
             )  # makes number in 1-26 range, shifts it by 'shift' value, places it back in its correct ascii range and converts back to char
             return shifted_char
         return char
-    
-    def encrypt(self, plaintext):
+
+    def encrypt(
+        self,
+        plaintext,
+    ):
         """Obfuscates the plaintext
 
         Args:

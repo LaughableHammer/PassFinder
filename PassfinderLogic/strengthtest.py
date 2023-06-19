@@ -2,13 +2,16 @@ import re  # provide regex capabilities
 
 
 class PasswordStrengthTest:  # provide a rating for an inputted password
-    def __init__(self):
+    def __init__(
+        self,
+    ):
         self.score = 20  # init score to 20, will be subtracted later if password is in common password list
         self.password_match = False
         self.common_passwords = []
 
     def load_common_passwords(
-        self, filename
+        self,
+        filename,
     ):  # loads the common password file - https://www.w3schools.com/python/python_file_open.asp
         try:
             with open(filename, "r") as file:
@@ -16,7 +19,10 @@ class PasswordStrengthTest:  # provide a rating for an inputted password
         except Exception as e:
             print("Error loading common passwords:", str(e))
 
-    def calculate_score(self, password):
+    def calculate_score(
+        self,
+        password,
+    ):
         length_password = len(password)
 
         if (
@@ -45,13 +51,16 @@ class PasswordStrengthTest:  # provide a rating for an inputted password
             self.score += 5
 
     def check_common_password(
-        self, password
+        self,
+        password,
     ):  # checks if password exists in common passwords file
         if password in self.common_passwords:
             self.password_match = True
             self.score -= 20
 
-    def run_strength_test(self):  # coordinates the strength test
+    def run_strength_test(
+        self,
+    ):  # coordinates the strength test
         filename = "TextFiles/SeclistsTop1000000"
         self.load_common_passwords(filename)
         password_input = input("Enter your password: ")

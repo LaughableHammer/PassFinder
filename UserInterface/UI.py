@@ -15,8 +15,14 @@ class PassFinder:
         self.root = ctk.CTk()
         self.root.geometry("800x500")  # window size
         self.root.title("PassFinder")
-        self.root.minsize(400, 450)  # minimum window size
-        self.root.resizable(0, 0)
+        self.root.minsize(
+            400,
+            450,
+        )  # minimum window size
+        self.root.resizable(
+            0,
+            0,
+        )
         self.account_manager = AccountManager()
 
     def destroy_frames(self):  # remove all frames open
@@ -24,7 +30,8 @@ class PassFinder:
             frame.destroy()
 
     def goto(
-        self, frame: "Frame"
+        self,
+        frame: "Frame",
     ) -> None:  # destroy current frame, open new defined one
         self.destroy_frames()
         frame.frame(self)
@@ -32,5 +39,8 @@ class PassFinder:
 
 class Frame(ABC):
     @abstractmethod
-    def frame(self, app: PassFinder) -> None:
+    def frame(
+        self,
+        app: PassFinder,
+    ) -> None:
         ...

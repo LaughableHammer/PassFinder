@@ -24,8 +24,9 @@ class StorePassword:
         self.conn.commit()
 
     def select_all_tasks(
-        self,):  # for debugging from-> https://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/
-        #selects everything in the database, only used for debugging
+        self,
+    ):  # for debugging from-> https://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/
+        # selects everything in the database, only used for debugging
         cur = self.conn.cursor()
         cur.execute("SELECT * FROM Passwords")
 
@@ -34,7 +35,12 @@ class StorePassword:
         for row in rows:
             print(row)
 
-    def save_password(self, username: str, app_name: str, password: str) -> None:
+    def save_password(
+        self,
+        username: str,
+        app_name: str,
+        password: str,
+    ) -> None:
         """saves a password for a user
 
         Args:
@@ -57,11 +63,15 @@ class StorePassword:
             (username, str(app_name), str(stored_password)),
         )
         save = self.cur.fetchone()
+
         self.conn.commit()
 
         return True
 
-    def get_password(self, username: str) -> str:
+    def get_password(
+        self,
+        username: str,
+    ) -> str:
         """uses the username to get all the passwords from the database
 
         Args:
@@ -81,11 +91,15 @@ class StorePassword:
             (app_name, decryptor.decrypt(password)) for app_name, password in passwords
         ]
         return results
-    
-    def delete_password(self, username: str, app_name: str):
+
+    def delete_password(
+        self,
+        username: str,
+        app_name: str,
+    ):
         self.cur.execute(
-            "DElETE FROM Passwords WHERE username = ? AND app_name = ?", (username, app_name),
+            "DElETE FROM Passwords WHERE username = ? AND app_name = ?",
+            (username, app_name),
         )
         self.conn.commit()
         return True
-        
