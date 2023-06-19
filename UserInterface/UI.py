@@ -5,6 +5,15 @@ from PassfinderLogic.accountmanager import AccountManager
 from PassfinderLogic import *
 from PIL import Image, ImageTk
 
+'''
+    NOTE:
+    Once again your imports are not separated.
+    You need more documentation that is present here.
+    As you have not outlined what these variables are 
+    for, or why this class is present. 
+    
+    Docstrings are dearly needed in this section.
+'''
 
 class PassFinder:
     def __init__(self):

@@ -7,6 +7,22 @@ from UserInterface.UI import Frame, PassFinder
 from UserInterface import MainUI, LoginUI, ProfileUI
 from PIL import Image, ImageTk
 
+'''
+    NOTE:
+    Again you have used far too many magic numbers and values 
+    in this code. It would be difficult for you to localise 
+    this app to any other languages or designs. 
+    To aid in this make sure you are using some sort of 
+    variable style system for storing common values. 
+    
+    Likewise, you have a nested function in your interface.
+    This is function is a disaster. Not only is it nested
+    inside the interface which makes it hard to debug. It
+    is also full of IF statements. Some of these statements
+    are also containing pass values. and thus do nothing. 
+    This is a silly way to do this. You should instead raise 
+    errors or make sure you use the built in Try Catch system. 
+'''
 
 class CreateAccountUI(Frame):
     def frame(self, app: PassFinder):
@@ -33,6 +49,15 @@ class CreateAccountUI(Frame):
         )
         confirm_password.pack(pady=12, padx=10)
 
+        '''
+            NOTE:
+            What is this function doing here?
+            How will you test this?
+            Why does it have so much conditional logic
+            is this function single purpose? NO it 
+            does about 15 separate things all of which 
+            are optional
+        '''
         def create_account():
             username = username_entry.get()
             password = password_entry.get()

@@ -6,6 +6,16 @@ from PIL import Image, ImageTk
 from UserInterface.UI import Frame, PassFinder
 from UserInterface import MainUI, CreateAccountUI
 
+'''
+    NOTE:
+    You have too many magic values hanging around 
+    in this file. Please try and scale some of them
+    down. 
+    
+    For instance, how will your code handle being 
+    resized for different screens or resolutions. 
+    Try a 4k monitor and see what happens.
+'''
 
 class LoginUI(Frame):
     def frame(self, app: PassFinder):

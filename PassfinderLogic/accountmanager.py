@@ -4,6 +4,24 @@ import hashlib
 
 # Used https://www.youtube.com/watch?v=3NEzo3CfbPg for inspiration
 
+'''
+    NOTE:
+    You have more than one class in this file, why?
+    
+    You also have a user class that does not indicate
+    if only one user can be active at a time. 
+    Should your user be a singleton, or can multiple users be 
+    active in the program?
+    
+    Likewise, you have database logic and connections present in this file, 
+    however, you do not have a database manager to ensure that you have 
+    these connections centrally managed. If your user is not a singleton,
+    then users can end up fighting for these resources. 
+    
+    Again no consistency, you should make sure that you have your 
+    coding style consistent between files, the whole project should 
+    be predictable in its style and format.
+'''
 
 @dataclass
 class User:

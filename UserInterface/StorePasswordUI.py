@@ -4,6 +4,20 @@ import tkinter as tk
 from UserInterface import LoginUI, ProfileUI, UI, MainUI
 from UserInterface.UI import Frame, PassFinder
 
+'''
+    NOTE: 
+    I have no idea what this class is for, 
+    as there is no docstring which is telling me what 
+    any of the functions are used for.
+    
+    The comments which are present seem to indicate 
+    changes of behaviour halfway through some functions.
+    Should this not be separated into different responsibilities.
+    
+    There are a lot of repeated magic numbers, none of which 
+    have an explanation. And the comments which are added; add 
+    no context to what the code is doing. 
+'''
 
 class StorePasswordUI(Frame):
     def frame(self, app: PassFinder):

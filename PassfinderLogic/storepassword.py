@@ -3,6 +3,21 @@ import sqlite3
 from PassfinderLogic.encryption import Encrypt
 from PassfinderLogic.decryption import Decrypt
 
+'''
+    NOTE:
+    Your coding style has completely changed here. You are now
+    using type hints and docstrings. This is inconsistent between
+    your other functions and this file. You need to make sure 
+    you are keeping things homogenous throughout your program.
+    
+    You are not even consistent in your own file. You are missing
+    docstrings for some of the functions in this file. Other variables
+    are also not type-hinted.
+    
+    The similar comment about print statements and for magic values.
+    You should not have any hardcoded numbers in this file. 
+    
+'''
 
 class StorePassword:
     def __init__(self):

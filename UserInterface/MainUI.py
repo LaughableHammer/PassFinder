@@ -9,6 +9,23 @@ from UserInterface import (
 )  # Import UI classes
 from UserInterface.UI import Frame, PassFinder
 
+'''
+    NOTE:
+    Your commenting is very poor, you have some comments 
+    here which are less than helpful. You need to make sure that you
+    have a consistent scheme for documenting the code you are writing.
+    
+    Furthermore, you should make sure that you are commenting as you 
+    write your code. You need to explain your current decisions. 
+    Likewise, you can come and clean these comments up. Then they can be
+    finalised. 
+    
+    You code is not very reusable. If you use object oriented design to 
+    reuse common user interface elements you will be able to recreate those
+    using simple imports and objects. 
+    
+    You are using a function within a function, why? 
+'''
 
 class MainUI(Frame):
     def frame(self, app: PassFinder):

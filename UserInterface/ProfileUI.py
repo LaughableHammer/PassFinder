@@ -4,6 +4,16 @@ from PIL import Image
 from UserInterface import MainUI, LoginUI
 from UserInterface.UI import Frame, PassFinder
 
+'''
+    NOTE:
+    Another undocumented class, with a function name which 
+    keeps appearing with no explanation of how it is different
+    from the 14 other times ive seen it. 
+    
+    Furthermore, this has no clear deliniation between 
+    variables and other constants. Or why there are 
+    magic values.
+'''
 
 class ProfileUI(Frame):
     def frame(self, app: PassFinder):

@@ -1,0 +1,88 @@
+This file has been provided to indicate to you some of the linting
+Errors which have been found by the program.
+FLAKE8 was used to detect these errors, it was told to ignore 
+E501 -> Line too long error
+
+## *************** Flake 8 Output ********************* ##
+
+./__main__.py:2:10: W291 trailing whitespace
+./__main__.py:3:45: W291 trailing whitespace
+./__main__.py:4:62: W291 trailing whitespace
+./__main__.py:5:61: W291 trailing whitespace
+./__main__.py:7:28: W291 trailing whitespace
+./__main__.py:8:1: W293 blank line contains whitespace
+./__main__.py:10:15: W291 trailing whitespace
+./__main__.py:12:1: F403 'from UserInterface import *' used; unable to detect undefined names
+./__main__.py:12:1: F401 'UserInterface.*' imported but unused
+./__main__.py:17:1: W293 blank line contains whitespace
+./__main__.py:25:11: W292 no newline at end of file
+./PassfinderLogic/encryption.py:11:5: E303 too many blank lines (2)
+./PassfinderLogic/encryption.py:29:1: W293 blank line contains whitespace
+./PassfinderLogic/encryption.py:44:52: W292 no newline at end of file
+./PassfinderLogic/accountmanager.py:22:16: W291 trailing whitespace
+./PassfinderLogic/generatepassword.py:2:14: W291 trailing whitespace
+./PassfinderLogic/generatepassword.py:15:13: W503 line break before binary operator
+./PassfinderLogic/generatepassword.py:16:13: W503 line break before binary operator
+./PassfinderLogic/generatepassword.py:65:17: W503 line break before binary operator
+./PassfinderLogic/generatepassword.py:66:17: W503 line break before binary operator
+./PassfinderLogic/storepassword.py:15:16: W291 trailing whitespace
+./PassfinderLogic/storepassword.py:27:9: E125 continuation line with same indent as next logical line
+./PassfinderLogic/storepassword.py:28:9: E265 block comment should start with '# '
+./PassfinderLogic/storepassword.py:59:9: F841 local variable 'save' is assigned to but never used
+./PassfinderLogic/storepassword.py:84:1: W293 blank line contains whitespace
+./PassfinderLogic/storepassword.py:90:24: F821 undefined name 'decryptor'
+./PassfinderLogic/storepassword.py:90:79: F821 undefined name 'passwords'
+./PassfinderLogic/storepassword.py:93:1: W293 blank line contains whitespace
+./PassfinderLogic/storepassword.py:93:9: W292 no newline at end of file
+./UserInterface/ViewPasswordsUI.py:4:1: F401 'tkinter.ttk' imported but unused
+./UserInterface/ViewPasswordsUI.py:14:40: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:15:52: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:16:24: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:17:1: W293 blank line contains whitespace
+./UserInterface/ViewPasswordsUI.py:18:49: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:19:56: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:21:1: W293 blank line contains whitespace
+./UserInterface/ViewPasswordsUI.py:22:59: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:23:59: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:24:55: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:26:1: W293 blank line contains whitespace
+./UserInterface/ViewPasswordsUI.py:27:57: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:28:40: W291 trailing whitespace
+./UserInterface/ViewPasswordsUI.py:31:1: E302 expected 2 blank lines, found 1
+./UserInterface/ViewPasswordsUI.py:60:13: E266 too many leading '#' for block comment
+./UserInterface/ViewPasswordsUI.py:78:17: F841 local variable 'app_password' is assigned to but never used
+./UserInterface/ViewPasswordsUI.py:95:42: E261 at least two spaces before inline comment
+./UserInterface/LoginUI.py:1:1: F401 'PassfinderLogic.accountmanager' imported but unused
+./UserInterface/LoginUI.py:4:1: F401 'PIL.Image' imported but unused
+./UserInterface/LoginUI.py:4:1: F401 'PIL.ImageTk' imported but unused
+./UserInterface/ProfileUI.py:1:1: F401 'PassfinderLogic.accountmanager' imported but unused
+./UserInterface/ProfileUI.py:3:1: F401 'PIL.Image' imported but unused
+./UserInterface/ProfileUI.py:4:1: F401 'UserInterface.MainUI' imported but unused
+./UserInterface/ProfileUI.py:25:82: W292 no newline at end of file
+./UserInterface/UI.py:3:1: F401 'tkinter as tk' imported but unused
+./UserInterface/UI.py:5:1: F403 'from PassfinderLogic import *' used; unable to detect undefined names
+./UserInterface/UI.py:5:1: F401 'PassfinderLogic.*' imported but unused
+./UserInterface/UI.py:6:1: F401 'PIL.Image' imported but unused
+./UserInterface/UI.py:6:1: F401 'PIL.ImageTk' imported but unused
+./UserInterface/UI.py:12:54: W291 trailing whitespace
+./UserInterface/UI.py:13:39: W291 trailing whitespace
+./UserInterface/UI.py:14:1: W293 blank line contains whitespace
+./UserInterface/UI.py:18:1: E302 expected 2 blank lines, found 1
+./UserInterface/CreateAccountUI.py:5:1: F401 'PassfinderLogic.accountmanager' imported but unused
+./UserInterface/CreateAccountUI.py:7:1: F401 'UserInterface.ProfileUI' imported but unused
+./UserInterface/CreateAccountUI.py:8:1: F401 'PIL.Image' imported but unused
+./UserInterface/CreateAccountUI.py:8:1: F401 'PIL.ImageTk' imported but unused
+./UserInterface/StorePasswordUI.py:4:1: F401 'UserInterface.LoginUI' imported but unused
+./UserInterface/StorePasswordUI.py:4:1: F401 'UserInterface.ProfileUI' imported but unused
+./UserInterface/StorePasswordUI.py:4:1: F401 'UserInterface.UI' imported but unused
+./UserInterface/StorePasswordUI.py:14:40: E231 missing whitespace after ','
+./UserInterface/StorePasswordUI.py:19:9: E265 block comment should start with '# '
+./UserInterface/StorePasswordUI.py:72:9: E265 block comment should start with '# '
+./UserInterface/StorePasswordUI.py:78:33: E261 at least two spaces before inline comment
+./UserInterface/StorePasswordUI.py:89:1: W293 blank line contains whitespace
+./UserInterface/StorePasswordUI.py:89:9: W292 no newline at end of file
+./UserInterface/MainUI.py:1:1: F401 'PassfinderLogic.accountmanager' imported but unused
+./UserInterface/MainUI.py:3:1: F401 'PIL.Image' imported but unused
+./UserInterface/MainUI.py:4:1: F401 'UserInterface.ProfileUI' imported but unused
+./UserInterface/MainUI.py:19:35: E231 missing whitespace after ','
+./UserInterface/MainUI.py:41:24: E262 inline comment should start with '# '
