@@ -1,5 +1,18 @@
 # inspiration from https://www.tutorialspoint.com/cryptography_with_python/cryptography_with_python_caesar_cipher.htm
 
+'''
+    NOTE:
+    Is this the only encryption function you have? 
+    What about using builtins for this?
+    How will you extend this so the user can use
+    different methods of encryption?
+    
+    The commenting in this file is not great.
+    
+    No consistency with other files. 
+    No type hints
+    ect.
+'''
 
 class Encrypt:
     def __init__(

@@ -1,5 +1,32 @@
 import re  # provide regex capabilities
 
+'''
+    NOTE:
+    Good use of reference comments. It is good to see that you
+    are crediting other authors on their code and guidance. 
+    
+    You are not using docstrings. Please ensure that you are
+    using these to give information about your functions and 
+    classes. They will help you use them elsewhere in your code
+    and also help the linter in picking types.
+    
+    Your code is littered with magic numbers. You should make 
+    sure that you are parametrizing your code so that it is easily
+    usable or maintainable. 
+    
+    The magic values extend to your password checker score.
+    What if you want to use different methods on how to check
+    passwords. 
+    Instead of having a function for each you can have an object
+    that conforms to a base class of password_checker. This will then 
+    be passed to the PasswordStrengthChecker  class. Then the user 
+    can compose their own set of tests, or you can easily add more 
+    in the future. 
+    
+    You likewise should not be using print for your application. It is 
+    GUI so everything should be shown on the GUI not the terminal.
+'''
+
 
 class PasswordStrengthTest:  # provide a rating for an inputted password
     def __init__(self):

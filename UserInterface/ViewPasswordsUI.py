@@ -9,6 +9,24 @@ from UserInterface import MainUI
 
 from UserInterface.UI import Frame, PassFinder
 
+'''
+    NOTE:
+    What is going on with your imports. 
+    You are not separating your system imports from 
+    your local imports. 
+    
+    Furthermore, you code has all of 3 comments, 
+    how can you explain your code so that the decisions 
+    you made are clear and the code speaks for itself.
+    
+    You also have a really weird way of storing constants. 
+    A constant is stored using ALL_CAPS and that will tell 
+    the interpreter it is a constant. It also makes it 
+    clear in your code.
+    
+    Please make sure you are using a linter, as you have 
+    variables which are not being used. 
+'''
 
 class ViewPasswordsUI(Frame):
     def frame(self, app: PassFinder):

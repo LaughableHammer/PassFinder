@@ -1,6 +1,22 @@
 import random
 import string 
 
+'''
+    NOTE:
+    This function is a disaster for moving to a 
+    GUI. Furthermore, it is not well suited for 
+    being a Object oriented function either. 
+    You need to change the way this function
+    processes the users choices, how will you 
+    add choices? are you going to modify this 
+    function and all the user interfaces that 
+    will depend on it every time?
+    You also have a nightmare of loops and IF
+    statements which are going to make it hard 
+    to debug this code.
+    You should plan this out more, and see me about 
+    modifying it for OO.
+'''
 
 class PasswordGenerator:
     def __init__(self):

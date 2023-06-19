@@ -1,5 +1,15 @@
 # inspiration from https://www.tutorialspoint.com/cryptography_with_python/cryptography_with_python_caesar_cipher.htm
 
+'''
+    NOTE: 
+    Similar complaints to the encrypt function. 
+    How are you going to guarantee that the encrypt and decrypt are 
+    always used together. 
+    You need to think about this in either an imperative or an
+    object oriented fashion. you are in some weird half way land.
+    
+    Again no consistency. 
+'''
 
 class Decrypt:
     def __init__(self, shift):
