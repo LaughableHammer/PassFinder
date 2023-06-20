@@ -42,6 +42,7 @@ class StorePasswordUI:
 
         #### Left side of the window (saving passwords) ####
 
+        # Create a label for saving passwords
         label = ctk.CTkLabel(
             master=frame_left,
             text="Save Password",
@@ -52,6 +53,7 @@ class StorePasswordUI:
             padx=10,
         )
 
+        # Create an entry field for the application name
         app_name = ctk.CTkEntry(
             master=frame_left,
             placeholder_text="Application Name",
@@ -61,6 +63,7 @@ class StorePasswordUI:
             padx=10,
         )
 
+        # Create an entry field for the application password
         app_password = ctk.CTkEntry(
             master=frame_left,
             placeholder_text="Application Password",
@@ -75,10 +78,12 @@ class StorePasswordUI:
             username = file.read()
 
         def store_password():
+            # Get the name and password entered by the user
             name = app_name.get()
             password = app_password.get()
 
             if len(name) > 50 or len(password) > 50:
+                # Show an error message for exceeding the character limit
                 tk.messagebox.showerror(
                     "Error",
                     "Please restrict input to 50 characters.",
@@ -87,6 +92,7 @@ class StorePasswordUI:
                     MainUI.MainUI(),
                 )
 
+            # Save the password using the storepassword module
             password_saved = storepassword.StorePassword().save_password(
                 username,
                 name,
@@ -94,6 +100,7 @@ class StorePasswordUI:
             )
 
             if password_saved:
+                # Show a success message and clear the input fields
                 tk.messagebox.showinfo(
                     "Password Saved",
                     "Password has been saved.",
@@ -107,11 +114,13 @@ class StorePasswordUI:
                     "end",
                 )
             else:
+                # Show an error message if the password could not be saved
                 tk.messagebox.showerror(
                     "Error",
                     "Password unable to be saved. Please try again.",
                 )
 
+        # Create a button for storing the password
         button = ctk.CTkButton(
             master=frame_left,
             text="Store New Password",
@@ -122,6 +131,7 @@ class StorePasswordUI:
             padx=10,
         )
 
+        # Create a button for going back to the main UI
         back_button = ctk.CTkButton(
             frame_left,
             text="Go Back",
@@ -133,6 +143,8 @@ class StorePasswordUI:
         )
 
         #### Right side of main (deleting passwords) ####
+
+        # Create a label for deleting passwords
         label = ctk.CTkLabel(
             master=frame_right,
             text="Delete Passwords",
@@ -143,6 +155,7 @@ class StorePasswordUI:
             padx=10,
         )
 
+        # Create an entry field for the application name to delete
         app_name_delete = ctk.CTkEntry(
             master=frame_right,
             placeholder_text="Application Name",
@@ -153,16 +166,22 @@ class StorePasswordUI:
         )
 
         def delete_password():
+            # Get the password to delete entered by the user
             password_to_delete = app_name_delete.get()
+
+            # Delete the password using the storepassword module
             password_deletion = storepassword.StorePassword().delete_password(
                 username, password_to_delete
             )
+
             if password_deletion:
+                # Show a success message if the password is deleted
                 tk.messagebox.showinfo(
                     "Password Deleted",
                     "Password has been deleted.",
                 )
             else:
+                # Show an error message if the password deletion fails
                 tk.messagebox.showerror(
                     "Error",
                     "Password deletion failed. Please try again.",
@@ -172,6 +191,7 @@ class StorePasswordUI:
                 "end",
             )
 
+        # Create a button for deleting the password
         button = ctk.CTkButton(
             master=frame_right,
             text="Delete Password",

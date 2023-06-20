@@ -4,7 +4,10 @@ import re
 
 from PassfinderLogic import accountmanager
 from UserInterface.UI import Frame, PassFinder
-from UserInterface import MainUI, LoginUI, ProfileUI
+from UserInterface import (
+    MainUI,
+    LoginUI,
+)
 from PIL import Image, ImageTk
 
 
@@ -82,10 +85,12 @@ class CreateAccountUI(Frame):
         )
 
         def create_account():
+            # Get the entered username, password, and confirmation password
             username = username_entry.get()
             password = password_entry.get()
             confirm = confirm_password.get()
 
+            # Check if username length is valid
             if len(username) > 25:
                 tk.messagebox.showerror(
                     "Error",
@@ -95,9 +100,11 @@ class CreateAccountUI(Frame):
                     CreateAccountUI.CreateAccountUI(),
                 )
 
+            # Save the username to a file
             with open("TextFiles/username.txt", "w") as file:
                 file.write(username)
 
+            # Check password requirements using regular expressions
             if re.search(
                 r"\d",
                 password,
@@ -153,7 +160,8 @@ class CreateAccountUI(Frame):
                 app.goto(
                     CreateAccountUI.CreateAccountUI(),
                 )
-            # show errors for different validation statements
+
+            # Show errors for different validation statements
             if password != confirm:
                 tk.messagebox.showerror(
                     "Input Error",
@@ -180,6 +188,7 @@ class CreateAccountUI(Frame):
                 app.goto(
                     CreateAccountUI.CreateAccountUI(),
                 )
+
             if len(password) > 100:
                 tk.messagebox.showerror(
                     "Input Error",
@@ -189,6 +198,7 @@ class CreateAccountUI(Frame):
                     CreateAccountUI.CreateAccountUI(),
                 )
 
+            # Create the account and proceed to the main UI if successful
             is_created = app.account_manager.create_account(
                 username,
                 password,

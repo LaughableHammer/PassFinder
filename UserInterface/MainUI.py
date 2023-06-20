@@ -3,10 +3,10 @@ import customtkinter as ctk
 from PIL import Image
 from UserInterface import (
     LoginUI,
-    ProfileUI,
     StorePasswordUI,
     ViewPasswordsUI,
     GeneratePasswordUI,
+    PasswordStrengthUI,
 )  # Import UI classes
 from UserInterface.UI import Frame, PassFinder
 
@@ -83,6 +83,17 @@ class MainUI(Frame):
             pady=12,
             padx=5,
         )
+
+        button = ctk.CTkButton(
+            master=frame,
+            text="Strength Test",
+            command=lambda: app.goto(PasswordStrengthUI.PasswordStrengthUI()),
+        )
+        button.pack(
+            pady=12,
+            padx=5,
+        )
+
 
         def logout():  #  Logout function
             app.account_manager.logout()

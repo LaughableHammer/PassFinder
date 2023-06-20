@@ -12,6 +12,7 @@ class LoginUI(Frame):
         self,
         app: PassFinder,
     ):
+        # Create the main frame for the login UI
         frame = ctk.CTkFrame(
             master=app.root,
             corner_radius=15,
@@ -23,20 +24,22 @@ class LoginUI(Frame):
             expand=True,
         )
 
+        # Create the title label
         label = ctk.CTkLabel(
             master=frame,
             text="Login",
             font=("Helvetica", 28),
-        )  # text at the top
+        )
         label.pack(
             pady=(15, 3),
             padx=10,
         )
 
+        # Create a horizontal line using canvas
         canvas = ctk.CTkCanvas(
             master=frame,
             height=1,
-        )  # separator line
+        )
         canvas.pack(
             fill="x",
             padx=10,
@@ -50,26 +53,29 @@ class LoginUI(Frame):
             fill="black",
         )
 
+        # Create an entry field for the username
         username_entry = ctk.CTkEntry(
             master=frame,
             placeholder_text="Username",
-        )  # username text box
+        )
         username_entry.pack(
             pady=12,
             padx=10,
         )
 
+        # Create an entry field for the password
         password_entry = ctk.CTkEntry(
             master=frame,
             placeholder_text="Password",
             show="*",
-        )  # password textbox
+        )
         password_entry.pack(
             pady=12,
             padx=10,
         )
 
-        def login():  # verify creditials in account manager python file
+        def login():
+            # Attempt to login with the provided credentials
             username = username_entry.get()
             password = password_entry.get()
 
@@ -82,15 +88,18 @@ class LoginUI(Frame):
             )
 
             if is_logged_in:
+                # Redirect to the main UI upon successful login
                 app.goto(
                     MainUI.MainUI(),
                 )
-            else:  # popup saying invalid details
+            else:
+                # Show an error message for invalid credentials
                 tk.messagebox.showerror(
                     "Input Error",
                     "Invalid username or password. Please try again.",
                 )  # intentionally vague for security purposes
 
+        # Create a button for login
         button = ctk.CTkButton(
             master=frame,
             text="Login",
@@ -101,6 +110,7 @@ class LoginUI(Frame):
             padx=10,
         )
 
+        # Create a label for "OR"
         create_account_label = ctk.CTkLabel(
             master=frame,
             text="OR",
@@ -109,6 +119,7 @@ class LoginUI(Frame):
             pady=0.8,
         )
 
+        # Create a button to go to the create account UI
         button = ctk.CTkButton(
             master=frame,
             text="Create Account",

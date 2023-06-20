@@ -4,10 +4,10 @@ import tkinter as tk
 import customtkinter as ctk
 from UserInterface.UI import Frame, PassFinder
 from UserInterface import MainUI
-from PassfinderLogic import generatepassword
+from PassfinderLogic.strengthtest import PasswordStrengthTest
 
 
-class GeneratePasswordUI(Frame):
+class PasswordStrengthUI(Frame):
     def frame(self, app: PassFinder):
         # Create the main frame for the generate password UI
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
@@ -16,7 +16,7 @@ class GeneratePasswordUI(Frame):
         # Create the title label
         label = ctk.CTkLabel(
             master=frame,
-            text="Generate Password",
+            text="Password Strength Test",
             font=("Helvetica", 28),
         )
         label.pack(
@@ -43,62 +43,33 @@ class GeneratePasswordUI(Frame):
         )
 
         # Create an entry field for password length
-        password_length = ctk.CTkEntry(
+        password_input = ctk.CTkEntry(
             master=frame,
-            placeholder_text="Password Length",
+            placeholder_text="Password",
         )
-        password_length.pack(
+        password_input.pack(
             pady=5,
         )
 
-        # Checkboxes for character types
-        checkbox_special = ctk.CTkCheckBox(
-            master=frame,
-            text="Special Characters",
-        )
-        checkbox_special.pack(
-            pady=5,
-        )
+        def strength_test():
+            input = password_input.get()
 
-        checkbox_numbers = ctk.CTkCheckBox(
-            master=frame,
-            text="Numbers",
-        )
-        checkbox_numbers.pack(
-            pady=5,
-        )
+            strength_tester = PasswordStrengthTest()
 
-        checkbox_normal = ctk.CTkCheckBox(
-            master=frame,
-            text="Normal Characters",
-        )
-        checkbox_normal.pack(
-            pady=5,
-        )
+            strength_test = strength_tester.run_strength_test(input)
 
-        def generate_password():
-            # Generate a password based on the selected options
-            password = generatepassword.PasswordGenerator.generate_password(
-                self,
-                password_length.get(),
-                checkbox_special.get(),
-                checkbox_numbers.get(),
-                checkbox_normal.get(),
-            )
-
-            # Show the generated password in a message box
             tk.messagebox.showinfo(
-                "Generated Password",
-                f"Generated Password: {password}",
+                "Strength Test",
+                strength_test,
             )
 
         # Create a button to generate the password
-        button_generate = ctk.CTkButton(
+        password_test = ctk.CTkButton(
             master=frame,
-            text="Generate Password",
-            command=generate_password,
+            text="Test Password",
+            command=strength_test,
         )
-        button_generate.pack(
+        password_test.pack(
             pady=12,
             padx=10,
         )

@@ -53,30 +53,33 @@ class PasswordStrengthTest:  # provide a rating for an inputted password
     def check_common_password(
         self,
         password,
+        filename,
     ):  # checks if password exists in common passwords file
+        try:
+            with open(filename, "r") as file:
+                self.common_passwords = file.read().splitlines()
+        except Exception as e:
+            print("Error loading common passwords:", str(e))
+
         if password in self.common_passwords:
             self.password_match = True
             self.score -= 20
 
     def run_strength_test(
         self,
-    ):  # coordinates the strength test
+        password,
+    ):
         filename = "TextFiles/SeclistsTop1000000"
-        self.load_common_passwords(filename)
-        password_input = input("Enter your password: ")
+        #self.load_common_passwords(filename)
 
-        self.calculate_score(password_input)
-        self.check_common_password(password_input)
+        self.calculate_score(password)
+        self.check_common_password(password, filename)
 
-        print(
-            "Your password has a security rating of " + str(self.score) + "%."
-        )  # displays results
+        result_message = f"Your password has a security rating of {self.score}%."
+
         if self.score < 100:
-            print(
-                "Please read our password requirement guide to create a more secure password."
-            )
+            result_message += "\nPlease read our password requirement guide to create a more secure password."
 
-
-if __name__ == "__main__":
-    password_tester = PasswordStrengthTest()
-    password_tester.run_strength_test()
+        return str(result_message)
+    
+strength_tester = PasswordStrengthTest()
