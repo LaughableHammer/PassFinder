@@ -42,6 +42,14 @@ class GeneratePasswordUI(Frame):
             fill="black",
         )
 
+
+        def validate_input(value): # only allow numbers to be inputted, credits: https://www.geeksforgeeks.org/python-tkinter-validating-entry-widget/ 
+            if value.isdigit() or value == "":
+                if value and int(value) > 50:
+                    return False
+                return True
+            return False
+        
         # Create an entry field for password length
         password_length = ctk.CTkEntry(
             master=frame,
@@ -50,6 +58,10 @@ class GeneratePasswordUI(Frame):
         password_length.pack(
             pady=5,
         )
+
+        reg = frame.register(validate_input)
+
+        password_length.configure(validate="key", validatecommand=(reg, '%P'),)
 
         # Checkboxes for character types
         checkbox_special = ctk.CTkCheckBox(
@@ -77,19 +89,38 @@ class GeneratePasswordUI(Frame):
         )
 
         def generate_password():
-            # Generate a password based on the selected options
+            # Get the input values
+            length = password_length.get()
+            special_chars = checkbox_special.get()
+            numbers = checkbox_numbers.get()
+            normal_chars = checkbox_normal.get()
+
+            # Validate password length input
+            if not length:
+                tk.messagebox.showerror("Error", "Please enter a password length.")
+                return
+            elif length == "0":
+                tk.messagebox.showerror("Input Error", "Password length cannot be zero.")
+                return
+
+            if not special_chars and not numbers and not normal_chars:
+                tk.messagebox.showerror("Input Error", "Please select at least one option.")
+                return
+                
+            # Generate the password
             password = generatepassword.PasswordGenerator.generate_password(
                 self,
-                password_length.get(),
-                checkbox_special.get(),
-                checkbox_numbers.get(),
-                checkbox_normal.get(),
+                length,
+                special_chars,
+                numbers,
+                normal_chars,
             )
 
             # Show the generated password in a message box
+            message = "Generated Password:\n" + password
             tk.messagebox.showinfo(
                 "Generated Password",
-                f"Generated Password: {password}",
+                message,
             )
 
         # Create a button to generate the password
