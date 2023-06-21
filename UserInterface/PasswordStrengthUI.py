@@ -54,6 +54,10 @@ class PasswordStrengthUI(Frame):
         def strength_test():
             input = password_input.get()
 
+            if not input:
+                tk.messagebox.showerror("Error", "Please enter a password.")
+                return
+
             strength_tester = PasswordStrengthTest()
 
             strength_test = strength_tester.run_strength_test(input)

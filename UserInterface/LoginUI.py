@@ -8,11 +8,21 @@ from UserInterface import MainUI, CreateAccountUI
 
 
 class LoginUI(Frame):
+    """1/2 UI for accountmanager.py
+
+    Args:
+        Frame (class): The app window
+    """
+
     def frame(
         self,
         app: PassFinder,
     ):
-        # Create the main frame for the login UI
+        """The "mini" app window that overlays the main window
+
+        Args:
+            app (PassFinder): The root app
+        """
         frame = ctk.CTkFrame(
             master=app.root,
             corner_radius=15,

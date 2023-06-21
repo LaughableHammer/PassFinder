@@ -1,7 +1,9 @@
 import re  # provide regex capabilities
 
 
-class PasswordStrengthTest:  # provide a rating for an inputted password
+class PasswordStrengthTest:
+    """Provide a rating for an inputted password"""
+
     def __init__(
         self,
     ):
@@ -12,7 +14,12 @@ class PasswordStrengthTest:  # provide a rating for an inputted password
     def load_common_passwords(
         self,
         filename,
-    ):  # loads the common password file - https://www.w3schools.com/python/python_file_open.asp
+    ):
+        """loads the common password file - https://www.w3schools.com/python/python_file_open.asp
+
+        Args:
+            filename (txt): Name of the filename to get the passwords from
+        """
         try:
             with open(filename, "r") as file:
                 self.common_passwords = file.read().splitlines()
@@ -23,6 +30,11 @@ class PasswordStrengthTest:  # provide a rating for an inputted password
         self,
         password,
     ):
+        """Main function, uses regex to see what character types are present
+
+        Args:
+            password (string): Password to test
+        """
         length_password = len(password)
 
         if (
@@ -54,7 +66,13 @@ class PasswordStrengthTest:  # provide a rating for an inputted password
         self,
         password,
         filename,
-    ):  # checks if password exists in common passwords file
+    ):
+        """checks if password exists in common passwords file
+
+        Args:
+            password (string): The password to check for
+            filename (string): Name of the file where the common passwords are stored
+        """
         try:
             with open(filename, "r") as file:
                 self.common_passwords = file.read().splitlines()
@@ -69,8 +87,16 @@ class PasswordStrengthTest:  # provide a rating for an inputted password
         self,
         password,
     ):
+        """Brings all the other functions together and is what is run, similar to "main" function
+
+        Args:
+            password (string): Password to test for
+
+        Returns:
+            string: The password rating and if strength is less than 100%, appends additional message
+        """
         filename = "TextFiles/SeclistsTop1000000"
-        #self.load_common_passwords(filename)
+        # self.load_common_passwords(filename)
 
         self.calculate_score(password)
         self.check_common_password(password, filename)
@@ -81,5 +107,3 @@ class PasswordStrengthTest:  # provide a rating for an inputted password
             result_message += "\nPlease read our password requirement guide to create a more secure password."
 
         return str(result_message)
-    
-strength_tester = PasswordStrengthTest()

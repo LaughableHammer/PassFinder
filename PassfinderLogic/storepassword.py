@@ -5,6 +5,8 @@ from PassfinderLogic.decryption import Decrypt
 
 
 class StorePassword:
+    """Responsible for storing and deleting passwords"""
+
     def __init__(self):
         self.conn = sqlite3.connect("TextFiles/Passwords.db")  # Connects to DB
         print("Opened DB successfully")
@@ -25,8 +27,8 @@ class StorePassword:
 
     def select_all_tasks(
         self,
-    ):  # for debugging from-> https://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/
-        # selects everything in the database, only used for debugging
+    ):
+        """Selects everything in database (used for debugging) from-> https://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/"""
         cur = self.conn.cursor()
         cur.execute("SELECT * FROM Passwords")
 

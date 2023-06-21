@@ -12,10 +12,21 @@ from PIL import Image, ImageTk
 
 
 class CreateAccountUI(Frame):
+    """2/2 UI for accountmanager.py
+
+    Args:
+        Frame (class): The main app window
+    """
+
     def frame(
         self,
         app: PassFinder,
     ):
+        """The "mini" app window that overlays the main window
+
+        Args:
+            app (PassFinder): The root app
+        """
         frame = ctk.CTkFrame(
             master=app.root,
             corner_radius=15,
@@ -85,7 +96,7 @@ class CreateAccountUI(Frame):
         )
 
         def create_account():
-            # Get the entered username, password, and confirmation password
+            """Take in user inputs and if valid, create an account in db"""
             username = username_entry.get()
             password = password_entry.get()
             confirm = confirm_password.get()
@@ -94,7 +105,7 @@ class CreateAccountUI(Frame):
             if len(username) > 25:
                 tk.messagebox.showerror(
                     "Error",
-                    "Username can't be longer than 20 characters.",
+                    "Username can't be longer than 25 characters.",
                 )
                 app.goto(
                     CreateAccountUI.CreateAccountUI(),

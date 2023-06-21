@@ -3,6 +3,8 @@ import string
 
 
 class PasswordGenerator:
+    """Generates a random password using user specifications"""
+
     def generate_password(
         self,
         length: str,
@@ -10,6 +12,17 @@ class PasswordGenerator:
         numbers: bool,
         normal_characters: bool,
     ):
+        """Generates an array of characters using user specifications and then selects random characters from it
+
+        Args:
+            length (str): Length of the password (user defined)
+            special_characters (bool): Whether to include special characters (user defined)
+            numbers (bool): Whether to include numbers (user defined)
+            normal_characters (bool): Whether to include normal ascii characters (user defined)
+
+        Returns:
+            password: The final string containing the generated password
+        """
         characters = ""
 
         if special_characters:

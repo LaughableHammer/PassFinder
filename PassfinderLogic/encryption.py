@@ -2,6 +2,8 @@
 
 
 class Encrypt:
+    """Encryption algorithm"""
+
     def __init__(
         self, shift
     ):  # takes in a param 'shift' which tells code how much to shift each character by

@@ -94,7 +94,6 @@ class MainUI(Frame):
             padx=5,
         )
 
-
         def logout():  #  Logout function
             app.account_manager.logout()
             app.goto(LoginUI.LoginUI())

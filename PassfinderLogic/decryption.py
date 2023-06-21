@@ -2,6 +2,8 @@
 
 
 class Decrypt:
+    """Decryption algorithm for the encryption algorithm"""
+
     def __init__(
         self,
         shift,

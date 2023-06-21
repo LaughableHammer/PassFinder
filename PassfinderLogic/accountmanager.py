@@ -13,6 +13,8 @@ class User:
 
 
 class AccountManager:
+    """Contains all things to do with logging in, creating accounts and user accounts"""
+
     def __init__(self):
         self.conn = sqlite3.connect("TextFiles/userlogindata.db")  # Connects to DB
         self.cur = self.conn.cursor()
@@ -98,4 +100,9 @@ class AccountManager:
     def logout(
         self,
     ) -> bool:
+        """Logs the user out
+
+        Returns:
+            bool: describes that the user has been logged out
+        """
         self.user = None
