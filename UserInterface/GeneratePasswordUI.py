@@ -15,7 +15,10 @@ class GeneratePasswordUI(Frame):
         Frame (class): The app window
     """
 
-    def frame(self, app: PassFinder):
+    def frame(
+        self,
+        app: PassFinder,
+    ):
         """The "mini" app window that overlays the main window
 
         Args:
@@ -113,6 +116,7 @@ class GeneratePasswordUI(Frame):
 
         def generate_password():
             """Get user specifications for the password + validation"""
+            button_generate.configure(state=tk.DISABLED)
             length = password_length.get()
             special_chars = checkbox_special.get()
             numbers = checkbox_numbers.get()
@@ -169,7 +173,7 @@ class GeneratePasswordUI(Frame):
             password_entry.pack(
                 pady=10,
             )
-
+            button_generate.configure(state=tk.NORMAL)
             # Function to copy the password to the clipboard
             def copy_password():
                 top.clipboard_clear()

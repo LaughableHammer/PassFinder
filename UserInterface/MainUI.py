@@ -12,10 +12,21 @@ from UserInterface.UI import Frame, PassFinder
 
 
 class MainUI(Frame):
+    """UI for the main page, allows access to all other functions
+
+    Args:
+        Frame (class): The app window
+    """
+
     def frame(
         self,
         app: PassFinder,
     ):
+        """The "mini" app window that overlays the main window
+
+        Args:
+            app (PassFinder): The root app
+        """
         frame_main = ctk.CTkFrame(
             master=app.root,
             corner_radius=15,
@@ -94,7 +105,8 @@ class MainUI(Frame):
             padx=5,
         )
 
-        def logout():  #  Logout function
+        def logout():
+            """Logs user out by moving them to the login page"""
             app.account_manager.logout()
             app.goto(LoginUI.LoginUI())
 

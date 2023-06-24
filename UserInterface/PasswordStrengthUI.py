@@ -8,8 +8,21 @@ from PassfinderLogic.strengthtest import PasswordStrengthTest
 
 
 class PasswordStrengthUI(Frame):
-    def frame(self, app: PassFinder):
-        # Create the main frame for the generate password UI
+    """UI for strengthtest.py
+
+    Args:
+        Frame (class): The app window
+    """
+
+    def frame(
+        self,
+        app: PassFinder,
+    ):
+        """The "mini" app window that overlays the main window
+
+        Args:
+            app (PassFinder): The root app
+        """
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
         frame.pack(pady=40, padx=50, fill="both", expand=True)
 
@@ -52,6 +65,7 @@ class PasswordStrengthUI(Frame):
         )
 
         def strength_test():
+            """Input validation + output for strength test"""
             input = password_input.get()
 
             if not input:

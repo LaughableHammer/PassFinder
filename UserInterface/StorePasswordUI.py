@@ -5,10 +5,21 @@ from UserInterface import MainUI
 
 
 class StorePasswordUI:
+    """UI for storepassword.py
+
+    Args:
+        Frame (class): The app window
+    """
+
     def frame(
         self,
         app,
     ):
+        """The "mini" app window that overlays the main window
+
+        Args:
+            app (PassFinder): The root app
+        """
         frame = ctk.CTkFrame(
             master=app.root,
             corner_radius=15,
@@ -78,7 +89,7 @@ class StorePasswordUI:
             username = file.read()
 
         def store_password():
-            # Get the name and password entered by the user
+            """Get the name and password entered by the user and call function + validation"""
             name = app_name.get()
             password = app_password.get()
 
@@ -166,7 +177,7 @@ class StorePasswordUI:
         )
 
         def delete_password():
-            # Get the password to delete entered by the user
+            """Get the password to delete entered by the user"""
             password_to_delete = app_name_delete.get()
 
             # Delete the password using the storepassword module

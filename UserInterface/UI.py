@@ -7,7 +7,10 @@ from PIL import Image, ImageTk
 
 
 class PassFinder:
+    """Main UI Window"""
+
     def __init__(self):
+        """Initialise the main window"""
         ctk.set_appearance_mode("System")  # Set the color theme for the app
         ctk.set_default_color_theme("blue")
         ctk.set_widget_scaling(1.1)  # Adjust the widget size relative to the app
@@ -26,7 +29,7 @@ class PassFinder:
         self.account_manager = AccountManager()
 
     def destroy_frames(self):
-        # Remove all frames that are currently open
+        """Remove all frames that are currently open"""
         for frame in self.root.winfo_children():
             frame.destroy()
 
@@ -34,7 +37,11 @@ class PassFinder:
         self,
         frame: "Frame",
     ) -> None:
-        # Destroy the current frame and open a new one as specified
+        """Destroy the current frame and open a new one as specified
+
+        Args:
+            frame (Frame): frame to open
+        """
         self.destroy_frames()
         frame.frame(self)
 
@@ -45,5 +52,9 @@ class Frame(ABC):
         self,
         app: PassFinder,
     ) -> None:
-        # Abstract method to be implemented by subclasses
+        """Abstract method to be implemented by subclasses
+
+        Args:
+            app (PassFinder): app window
+        """
         ...

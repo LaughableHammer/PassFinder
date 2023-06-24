@@ -1,7 +1,7 @@
 from PassfinderLogic import accountmanager
 import customtkinter as ctk
 import tkinter as tk
-from PIL import Image, ImageTk
+import tkinter.tix as tix
 
 from UserInterface.UI import Frame, PassFinder
 from UserInterface import MainUI, CreateAccountUI
@@ -23,6 +23,7 @@ class LoginUI(Frame):
         Args:
             app (PassFinder): The root app
         """
+
         frame = ctk.CTkFrame(
             master=app.root,
             corner_radius=15,
@@ -85,7 +86,7 @@ class LoginUI(Frame):
         )
 
         def login():
-            # Attempt to login with the provided credentials
+            """Attempt to login with the provided credentials"""
             username = username_entry.get()
             password = password_entry.get()
 
@@ -118,7 +119,7 @@ class LoginUI(Frame):
         button.pack(
             pady=(12, 4),
             padx=10,
-        )
+        )           
 
         # Create a label for "OR"
         create_account_label = ctk.CTkLabel(
