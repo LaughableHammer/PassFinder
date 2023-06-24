@@ -2,7 +2,7 @@ import random
 import string
 import tkinter as tk
 import customtkinter as ctk
-import pyperclip
+#import pyperclip
 from UserInterface.UI import Frame, PassFinder
 from UserInterface import MainUI
 from PassfinderLogic import generatepassword
@@ -116,7 +116,6 @@ class GeneratePasswordUI(Frame):
 
         def generate_password():
             """Get user specifications for the password + validation"""
-            button_generate.configure(state=tk.DISABLED)
             length = password_length.get()
             special_chars = checkbox_special.get()
             numbers = checkbox_numbers.get()
@@ -151,6 +150,8 @@ class GeneratePasswordUI(Frame):
             top = tk.Toplevel()
             top.title("Generated Password")
 
+            button_generate.configure(state=tk.DISABLED)
+
             # Create a label to show the password
             password_label = tk.Label(
                 top,
@@ -173,7 +174,7 @@ class GeneratePasswordUI(Frame):
             password_entry.pack(
                 pady=10,
             )
-            button_generate.configure(state=tk.NORMAL)
+            
             # Function to copy the password to the clipboard
             def copy_password():
                 top.clipboard_clear()
@@ -189,6 +190,13 @@ class GeneratePasswordUI(Frame):
             copy_button.pack(
                 pady=10,
             )
+            def close_window():
+                # Release the grab and enable the main window
+                button_generate.configure(state=tk.NORMAL)
+                top.destroy()
+
+            # Configure the pop-up window to call the close_window function when closed
+            top.protocol("WM_DELETE_WINDOW", close_window)
 
         # Create a button to generate the password
         button_generate = ctk.CTkButton(
