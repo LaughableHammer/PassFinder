@@ -13,7 +13,7 @@ class PasswordStrengthTest:
 
     def load_common_passwords(
         self,
-        filename,
+        filename: str,
     ):
         """loads the common password file - https://www.w3schools.com/python/python_file_open.asp
 
@@ -28,7 +28,7 @@ class PasswordStrengthTest:
 
     def calculate_score(
         self,
-        password,
+        password: str,
     ):
         """Main function, uses regex to see what character types are present
 
@@ -64,8 +64,8 @@ class PasswordStrengthTest:
 
     def check_common_password(
         self,
-        password,
-        filename,
+        password: str,
+        filename: str,
     ):
         """checks if password exists in common passwords file
 
@@ -85,7 +85,7 @@ class PasswordStrengthTest:
 
     def run_strength_test(
         self,
-        password,
+        password: str,
     ):
         """Brings all the other functions together and is what is run, similar to "main" function
 

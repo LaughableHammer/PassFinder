@@ -11,7 +11,7 @@ class Encrypt:
 
     def shift_character(
         self,
-        char,
+        char: chr,
     ):
         """shifts the ascii value of a character by shift value
 
@@ -33,7 +33,7 @@ class Encrypt:
 
     def encrypt(
         self,
-        plaintext,
+        plaintext: str,
     ):
         """Obfuscates the plaintext
 

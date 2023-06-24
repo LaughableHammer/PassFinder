@@ -6,13 +6,13 @@ class Decrypt:
 
     def __init__(
         self,
-        shift,
+        shift: int,
     ):
         self.shift = shift
 
     def shift_character(
         self,
-        char,
+        char: chr,
         reverse=False,
     ):
         """shifts each character's ascii value by an amount
@@ -39,7 +39,7 @@ class Decrypt:
 
     def decrypt(
         self,
-        ciphertext,
+        ciphertext: str,
     ):
         """uses shift_character to decrypt all letters of a string
 
