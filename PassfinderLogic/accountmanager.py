@@ -1,12 +1,14 @@
 from dataclasses import dataclass
 import sqlite3
 import hashlib
+import os
 
 # Used https://www.youtube.com/watch?v=3NEzo3CfbPg for inspiration
 
 
 @dataclass
 class User:
+    """Defines a user"""
     user_id: int
     username: str
     password: str
@@ -16,20 +18,24 @@ class AccountManager:
     """Contains all things to do with logging in, creating accounts and user accounts"""
 
     def __init__(self):
-        self.conn = sqlite3.connect("TextFiles/userlogindata.db")  # Connects to DB
+        database_path = 'TextFiles/userlogindata.db'
+        absolute_path = os.path.abspath(database_path)
+        print(f"Database path: {absolute_path}")
+
+        self.conn = sqlite3.connect('TextFiles/userlogindata.db')
         self.cur = self.conn.cursor()
 
-        # Create database if it doesn't already exist
-        self.cur.execute(
-            """     
-            CREATE TABLE IF NOT EXISTS userlogindata (
-                id INTEGER PRIMARY KEY,
-                username VARCHAR(255) NOT NULL,
-                password VARCHAR(255) NOT NULL
+        if not os.path.exists("TextFiles/userlogindata.db"):# Create database if it doesn't already exist
+            self.cur.execute(
+                """     
+                CREATE TABLE IF NOT EXISTS userlogindata (
+                    id INTEGER PRIMARY KEY,
+                    username VARCHAR(255) NOT NULL,
+                    password VARCHAR(255) NOT NULL
+                )
+            """
             )
-        """
-        )
-        self.conn.commit()
+            self.conn.commit()
 
         self.user: User | None = None
 

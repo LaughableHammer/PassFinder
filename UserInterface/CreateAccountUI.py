@@ -8,8 +8,6 @@ from UserInterface import (
     MainUI,
     LoginUI,
 )
-from PIL import Image, ImageTk
-#from tktooltip import ToolTip
 
 
 class CreateAccountUI(Frame):
@@ -75,7 +73,6 @@ class CreateAccountUI(Frame):
             pady=12,
             padx=10,
         )
-        ToolTip(username_entry, "Enter your desired username here.")
 
 
         password_entry = ctk.CTkEntry(
