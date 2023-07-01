@@ -95,7 +95,7 @@ class PasswordStrengthUI(Frame):
         # Create a button to go back to the main UI
         button_back = ctk.CTkButton(
             master=frame,
-            text="Back",
+            text="Go Back",
             command=lambda: app.goto(MainUI.MainUI()),
         )
         button_back.pack(

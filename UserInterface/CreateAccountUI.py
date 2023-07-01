@@ -1,8 +1,8 @@
-import customtkinter as ctk
 import tkinter as tk
 import re
+import customtkinter as ctk
 
-from PassfinderLogic import accountmanager
+
 from UserInterface.UI import Frame, PassFinder
 from UserInterface import (
     MainUI,
