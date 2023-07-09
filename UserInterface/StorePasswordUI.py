@@ -1,6 +1,6 @@
 import tkinter as tk
-from PassfinderLogic import storepassword
 import customtkinter as ctk
+from PassfinderLogic import storepassword
 from UserInterface import MainUI
 
 

@@ -24,18 +24,18 @@ class AccountManager:
 
         self.conn = sqlite3.connect('TextFiles/userlogindata.db')
         self.cur = self.conn.cursor()
-
-        if not os.path.exists("TextFiles/userlogindata.db"):# Create database if it doesn't already exist
-            self.cur.execute(
-                """     
-                CREATE TABLE IF NOT EXISTS userlogindata (
-                    id INTEGER PRIMARY KEY,
-                    username VARCHAR(255) NOT NULL,
-                    password VARCHAR(255) NOT NULL
-                )
-            """
+        
+        # Create database if it doesn't already exist
+        self.cur.execute(
+            """     
+            CREATE TABLE IF NOT EXISTS userlogindata (
+                id INTEGER PRIMARY KEY,
+                username VARCHAR(255) NOT NULL,
+                password VARCHAR(255) NOT NULL
             )
-            self.conn.commit()
+        """
+        )
+        self.conn.commit()
 
         self.user: User | None = None
 

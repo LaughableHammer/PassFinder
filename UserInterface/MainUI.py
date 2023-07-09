@@ -1,6 +1,4 @@
-from PassfinderLogic import accountmanager
 import customtkinter as ctk
-from PIL import Image
 from UserInterface import (
     LoginUI,
     StorePasswordUI,

@@ -1,9 +1,6 @@
 from abc import ABC, abstractmethod
 import customtkinter as ctk
-import tkinter as tk
 from PassfinderLogic.accountmanager import AccountManager
-from PassfinderLogic import *
-from PIL import Image, ImageTk
 
 
 class PassFinder:
@@ -47,6 +44,11 @@ class PassFinder:
 
 
 class Frame(ABC):
+    """Defines the frame that all the UI elements assemble on
+
+    Args:
+        ABC (_type_): 
+    """
     @abstractmethod
     def frame(
         self,

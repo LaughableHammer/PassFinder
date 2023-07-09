@@ -1,7 +1,7 @@
-from UserInterface import *  # Importing all modules from UserInterface
-from UserInterface import UI, LoginUI
+from UserInterface import UI, LoginUI # Import the first page of the application
 
 def main():
+    """Runs the application UI and goes to login page"""
     app = UI.PassFinder()  # Creating an instance of the PassFinder application
     app.goto(LoginUI.LoginUI())  # Navigating to the LoginUI frame
 
@@ -9,3 +9,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

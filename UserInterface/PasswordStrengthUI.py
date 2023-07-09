@@ -1,5 +1,3 @@
-import random
-import string
 import tkinter as tk
 import customtkinter as ctk
 from UserInterface.UI import Frame, PassFinder
