@@ -1,8 +1,10 @@
+"""Import UI elements and Logic"""
 import tkinter as tk
 import customtkinter as ctk
 
 from UserInterface.UI import Frame, PassFinder
 from UserInterface import MainUI, CreateAccountUI
+from UserInterface.ToolTip import ToolTip
 
 
 class LoginUI(Frame):
@@ -71,6 +73,7 @@ class LoginUI(Frame):
             pady=12,
             padx=10,
         )
+        ToolTip(widget=username_entry, text="Enter your username")
 
         # Create an entry field for the password
         password_entry = ctk.CTkEntry(
@@ -82,14 +85,12 @@ class LoginUI(Frame):
             pady=12,
             padx=10,
         )
+        ToolTip(widget=password_entry, text="Enter your password")
 
         def login():
             """Attempt to login with the provided credentials"""
             username = username_entry.get()
             password = password_entry.get()
-
-            with open("TextFiles/username.txt", "w") as file:
-                file.write(username)
 
             is_logged_in = app.account_manager.login(
                 username,
@@ -101,6 +102,8 @@ class LoginUI(Frame):
                 app.goto(
                     MainUI.MainUI(),
                 )
+                with open("TextFiles/username.txt", "w", encoding="utf-8") as file:
+                    file.write(username)
             else:
                 # Show an error message for invalid credentials
                 tk.messagebox.showerror(
@@ -117,7 +120,7 @@ class LoginUI(Frame):
         button.pack(
             pady=(12, 4),
             padx=10,
-        )           
+        )
 
         # Create a label for "OR"
         create_account_label = ctk.CTkLabel(

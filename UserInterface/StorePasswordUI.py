@@ -1,7 +1,10 @@
+"""Import UI elements and Logic"""
 import tkinter as tk
 import customtkinter as ctk
+
 from PassfinderLogic import storepassword
 from UserInterface import MainUI
+from UserInterface.ToolTip import ToolTip
 
 
 class StorePasswordUI:
@@ -73,6 +76,7 @@ class StorePasswordUI:
             pady=12,
             padx=10,
         )
+        ToolTip(app_name, "Enter the application name")
 
         # Create an entry field for the application password
         app_password = ctk.CTkEntry(
@@ -84,8 +88,9 @@ class StorePasswordUI:
             pady=12,
             padx=10,
         )
+        ToolTip(app_password, "Enter password for application")
 
-        with open("TextFiles/username.txt", "r") as file:
+        with open("TextFiles/username.txt", "r", encoding="utf-8") as file:
             username = file.read()
 
         def store_password():
@@ -93,15 +98,21 @@ class StorePasswordUI:
             name = app_name.get()
             password = app_password.get()
 
+            if not name or not password:
+                # Show an error message for null input
+                tk.messagebox.showerror(
+                    "Error",
+                    "Please don't leave any input fields empty.",
+                )
+                return
+
             if len(name) > 50 or len(password) > 50:
                 # Show an error message for exceeding the character limit
                 tk.messagebox.showerror(
                     "Error",
                     "Please restrict input to 50 characters.",
                 )
-                app.goto(
-                    MainUI.MainUI(),
-                )
+                return
 
             # Save the password using the storepassword module
             password_saved = storepassword.StorePassword().save_password(
@@ -175,14 +186,24 @@ class StorePasswordUI:
             pady=12,
             padx=10,
         )
+        ToolTip(app_name_delete, "Enter application name to delete")
 
         def delete_password():
             """Get the password to delete entered by the user"""
             password_to_delete = app_name_delete.get()
 
+            if not password_to_delete:
+                # Show an error message for null input
+                tk.messagebox.showerror(
+                    "Error",
+                    "Please specify application to delete.",
+                )
+                return
+
             # Delete the password using the storepassword module
             password_deletion = storepassword.StorePassword().delete_password(
-                username, password_to_delete
+                username,
+                password_to_delete,
             )
 
             if password_deletion:

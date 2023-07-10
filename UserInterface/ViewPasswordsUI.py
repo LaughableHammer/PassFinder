@@ -1,13 +1,27 @@
-import customtkinter as ctk
+"""Import UI and Logic elements"""
 import tkinter as tk
-from tkinter import ttk
+import customtkinter as ctk
+
 from PassfinderLogic import storepassword
 from UserInterface import MainUI
 from UserInterface.UI import Frame, PassFinder
+from UserInterface.ToolTip import ToolTip
 
 
 class ViewPasswordsUI(Frame):
+    """UI to view passwords from storepassword.py
+
+    Args:
+        Frame (class): The app window
+    """
+
     def frame(self, app: PassFinder):
+        """The "mini" app window that overlays the main window
+
+        Args:
+            app (PassFinder): The root app
+        """
+
         frame = ctk.CTkFrame(master=app.root, corner_radius=15)
         frame.pack(pady=40, padx=50, fill="both", expand=True)
 
@@ -20,7 +34,7 @@ class ViewPasswordsUI(Frame):
         canvas.pack(fill="x", padx=10, pady=10)
         canvas.create_line(0, 1, int(frame.winfo_width() * 0.5), 1, fill="black")
 
-        with open("TextFiles/username.txt", "r") as file:
+        with open("TextFiles/username.txt", "r", encoding="utf-8") as file:
             username = str(file.read())
 
         tk.messagebox.showwarning("Reminder", "Never share your password with anyone!")
@@ -43,7 +57,6 @@ class ViewPasswordsUI(Frame):
             button_width = int(screen_width * button_width_percentage)
 
             for app_name, password in stored_passwords:  # Iterate for every password
-                app_password = password
                 button = ctk.CTkButton(
                     scrollable_frame,
                     text=app_name,
@@ -56,6 +69,7 @@ class ViewPasswordsUI(Frame):
                 button.grid(
                     row=row, column=column, padx=button_padding, pady=button_padding
                 )
+                ToolTip(button, "Click to reveal password")
 
                 column += 1
                 if column == max_columns:  # Next row if column is full

@@ -1,8 +1,11 @@
+"""Import UI elements and Logic"""
 import tkinter as tk
 import customtkinter as ctk
-from UserInterface.UI import Frame, PassFinder
-from UserInterface import MainUI
+
 from PassfinderLogic.strengthtest import PasswordStrengthTest
+from UserInterface import MainUI
+from UserInterface.ToolTip import ToolTip
+from UserInterface.UI import Frame, PassFinder
 
 
 class PasswordStrengthUI(Frame):
@@ -61,12 +64,13 @@ class PasswordStrengthUI(Frame):
         password_input.pack(
             pady=5,
         )
+        ToolTip(password_input, "Enter password to test")
 
         def strength_test():
             """Input validation + output for strength test"""
-            input = password_input.get()
+            pwd_input = password_input.get()
 
-            if not input:
+            if not pwd_input:
                 tk.messagebox.showerror("Error", "Please enter a password.")
                 return
 

@@ -47,8 +47,9 @@ class Frame(ABC):
     """Defines the frame that all the UI elements assemble on
 
     Args:
-        ABC (_type_): 
+        ABC (_type_):
     """
+
     @abstractmethod
     def frame(
         self,

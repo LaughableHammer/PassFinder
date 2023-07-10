@@ -1,13 +1,14 @@
+"""Import UI elements and Logic"""
 import tkinter as tk
 import re
 import customtkinter as ctk
-
 
 from UserInterface.UI import Frame, PassFinder
 from UserInterface import (
     MainUI,
     LoginUI,
 )
+from UserInterface.ToolTip import ToolTip
 
 
 class CreateAccountUI(Frame):
@@ -73,7 +74,7 @@ class CreateAccountUI(Frame):
             pady=12,
             padx=10,
         )
-
+        ToolTip(username_entry, "Enter a username")
 
         password_entry = ctk.CTkEntry(
             master=frame,
@@ -84,6 +85,7 @@ class CreateAccountUI(Frame):
             pady=12,
             padx=10,
         )
+        ToolTip(password_entry, "Enter a password")
 
         confirm_password = ctk.CTkEntry(
             master=frame,
@@ -94,6 +96,7 @@ class CreateAccountUI(Frame):
             pady=12,
             padx=10,
         )
+        ToolTip(confirm_password, "Enter password again")
 
         def create_account():
             """Take in user inputs and if valid, create an account in db"""
@@ -112,7 +115,7 @@ class CreateAccountUI(Frame):
                 )
 
             # Save the username to a file
-            with open("TextFiles/username.txt", "w") as file:
+            with open("TextFiles/username.txt", "w", encoding="utf-8") as file:
                 file.write(username)
 
             # Check password requirements using regular expressions

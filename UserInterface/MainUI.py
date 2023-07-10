@@ -1,3 +1,4 @@
+"""Import UI elements"""
 import customtkinter as ctk
 from UserInterface import (
     LoginUI,

@@ -1,11 +1,11 @@
-import random
-import string
+"""Import UI elements and Logic"""
 import tkinter as tk
 import customtkinter as ctk
-#import pyperclip
-from UserInterface.UI import Frame, PassFinder
-from UserInterface import MainUI
+
 from PassfinderLogic import generatepassword
+from UserInterface import MainUI
+from UserInterface.ToolTip import ToolTip
+from UserInterface.UI import Frame, PassFinder
 
 
 class GeneratePasswordUI(Frame):
@@ -81,6 +81,7 @@ class GeneratePasswordUI(Frame):
         password_length.pack(
             pady=5,
         )
+        ToolTip(password_length, "Enter desired password length")
 
         reg = frame.register(validate_input)
 
@@ -100,7 +101,7 @@ class GeneratePasswordUI(Frame):
 
         checkbox_numbers = ctk.CTkCheckBox(
             master=frame,
-            text="Numbers",
+            text="Numbers                    ",
         )
         checkbox_numbers.pack(
             pady=5,
@@ -174,7 +175,7 @@ class GeneratePasswordUI(Frame):
             password_entry.pack(
                 pady=10,
             )
-            
+
             # Function to copy the password to the clipboard
             def copy_password():
                 top.clipboard_clear()
@@ -190,6 +191,7 @@ class GeneratePasswordUI(Frame):
             copy_button.pack(
                 pady=10,
             )
+
             def close_window():
                 # Release the grab and enable the main window
                 button_generate.configure(state=tk.NORMAL)
