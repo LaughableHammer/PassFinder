@@ -2,6 +2,22 @@ from dataclasses import dataclass
 import sqlite3
 import hashlib
 import os
+import sys
+
+# allows the application to compile properly, solution from -> https://github.com/TomSchimansky/CustomTkinter/issues/1374
+
+# initializing a variable containing the path where application files are stored.
+application_path = ""
+
+# attempting to get where the program files are stored
+if getattr(sys, "frozen", False):
+    # if program was frozen (compiled) using pyinstaller, the bootloader creates a sys attribute
+    application_path = sys._MEIPASS
+else:
+    # if program is not compiled using pyinstaller and is running normally like a Python file.
+    application_path = os.path.dirname(os.path.abspath(__file__))
+# changing the current working directory to the path where one-file mode source files are extracted
+os.chdir(application_path)
 
 # Used https://www.youtube.com/watch?v=3NEzo3CfbPg for inspiration
 
@@ -9,6 +25,7 @@ import os
 @dataclass
 class User:
     """Defines a user"""
+
     user_id: int
     username: str
     password: str
@@ -18,13 +35,13 @@ class AccountManager:
     """Contains all things to do with logging in, creating accounts and user accounts"""
 
     def __init__(self):
-        database_path = 'TextFiles/userlogindata.db'
+        database_path = "TextFiles/userlogindata.db"
         absolute_path = os.path.abspath(database_path)
         print(f"Database path: {absolute_path}")
 
-        self.conn = sqlite3.connect('TextFiles/userlogindata.db')
+        self.conn = sqlite3.connect("TextFiles/userlogindata.db")
         self.cur = self.conn.cursor()
-        
+
         # Create database if it doesn't already exist
         self.cur.execute(
             """     
