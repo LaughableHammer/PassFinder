@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pathlib import Path
 import sqlite3
 import hashlib
 import os
@@ -13,6 +14,7 @@ application_path = ""
 if getattr(sys, "frozen", False):
     # if program was frozen (compiled) using pyinstaller, the bootloader creates a sys attribute
     application_path = sys._MEIPASS
+    application_path = os.path.dirname(sys.executable)
 else:
     # if program is not compiled using pyinstaller and is running normally like a Python file.
     application_path = os.path.dirname(os.path.abspath(__file__))
@@ -39,11 +41,12 @@ class AccountManager:
         absolute_path = os.path.abspath(database_path)
         print(f"Database path: {absolute_path}")
 
-        self.conn = sqlite3.connect("TextFiles/userlogindata.db")
-        self.cur = self.conn.cursor()
-
-        # Create database if it doesn't already exist
-        self.cur.execute(
+        # self.conn = sqlite3.connect("TextFiles/userlogindata.db")
+        try:
+            self.conn = sqlite3.connect(absolute_path)
+            self.cur = self.conn.cursor()
+        except sqlite3.OperationalError:
+            self.cur.execute(
             """     
             CREATE TABLE IF NOT EXISTS userlogindata (
                 id INTEGER PRIMARY KEY,
@@ -53,6 +56,24 @@ class AccountManager:
         """
         )
         self.conn.commit()
+        finally:
+            self.conn = sqlite3.connect(absolute_path)
+
+
+    
+        # self.cur = self.conn.cursor()
+
+        # Create database if it doesn't already exist
+        # self.cur.execute(
+        #     """     
+        #     CREATE TABLE IF NOT EXISTS userlogindata (
+        #         id INTEGER PRIMARY KEY,
+        #         username VARCHAR(255) NOT NULL,
+        #         password VARCHAR(255) NOT NULL
+        #     )
+        # """
+        # )
+        # self.conn.commit()
 
         self.user: User | None = None
 

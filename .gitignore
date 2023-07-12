@@ -2,3 +2,11 @@ TextFiles/userlogindata.db
 TextFiles/passwords.db
 TextFiles/username.txt
 TextFiles/setup.py
+
+/build/*
+/dist/
+.vscode
+
+*/__pycache__
+
+*.db
