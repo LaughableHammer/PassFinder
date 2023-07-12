@@ -5,6 +5,9 @@ import hashlib
 import os
 import sys
 
+# Local imports
+from .config import *
+
 # allows the application to compile properly, solution from -> https://github.com/TomSchimansky/CustomTkinter/issues/1374
 
 # initializing a variable containing the path where application files are stored.
@@ -37,43 +40,26 @@ class AccountManager:
     """Contains all things to do with logging in, creating accounts and user accounts"""
 
     def __init__(self):
-        database_path = "TextFiles/userlogindata.db"
-        absolute_path = os.path.abspath(database_path)
-        print(f"Database path: {absolute_path}")
+        absolute_path: Path = Path.joinpath(
+            Path.cwd().parent, configuration.text_directory, configuration.database_name
+        )
 
-        # self.conn = sqlite3.connect("TextFiles/userlogindata.db")
-        try:
+        if absolute_path.exists():
             self.conn = sqlite3.connect(absolute_path)
             self.cur = self.conn.cursor()
-        except sqlite3.OperationalError:
-            self.cur.execute(
-            """     
-            CREATE TABLE IF NOT EXISTS userlogindata (
-                id INTEGER PRIMARY KEY,
-                username VARCHAR(255) NOT NULL,
-                password VARCHAR(255) NOT NULL
-            )
-        """
-        )
-        self.conn.commit()
-        finally:
+        else:
+            print("Creating database")
             self.conn = sqlite3.connect(absolute_path)
-
-
-    
-        # self.cur = self.conn.cursor()
-
-        # Create database if it doesn't already exist
-        # self.cur.execute(
-        #     """     
-        #     CREATE TABLE IF NOT EXISTS userlogindata (
-        #         id INTEGER PRIMARY KEY,
-        #         username VARCHAR(255) NOT NULL,
-        #         password VARCHAR(255) NOT NULL
-        #     )
-        # """
-        # )
-        # self.conn.commit()
+            self.cur.execute(
+                """     
+                CREATE TABLE IF NOT EXISTS userlogindata (
+                    id INTEGER PRIMARY KEY,
+                    username VARCHAR(255) NOT NULL,
+                    password VARCHAR(255) NOT NULL
+                    )
+                """
+            )
+            self.conn.commit()
 
         self.user: User | None = None
 
