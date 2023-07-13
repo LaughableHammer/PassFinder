@@ -10,3 +10,4 @@ TextFiles/setup.py
 */__pycache__
 
 *.db
+*.pyc

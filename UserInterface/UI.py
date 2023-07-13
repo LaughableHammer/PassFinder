@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import customtkinter as ctk
-from PassfinderLogic.accountmanager import AccountManager
+from PassfinderLogic.accounts.accountmanager import AccountManager
 
 
 class PassFinder:
