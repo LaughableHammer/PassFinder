@@ -76,7 +76,7 @@ class PasswordStrengthUI(Frame):
 
             strength_tester = PasswordStrengthTest()
 
-            strength_test = strength_tester.run_strength_test(input)
+            strength_test = strength_tester.run_strength_test(pwd_input)
 
             tk.messagebox.showinfo(
                 "Strength Test",

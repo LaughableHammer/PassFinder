@@ -37,7 +37,7 @@ class ViewPasswordsUI(Frame):
         with open("TextFiles/username.txt", "r", encoding="utf-8") as file:
             username = str(file.read())
 
-        tk.messagebox.showwarning("Reminder", "Never share your password with anyone!")
+        # tk.messagebox.showwarning("Reminder", "Never share your password with anyone!")
 
         stored_passwords = storepassword.StorePassword().get_password(username)
         # Calls storepassword to retrieve all stored passwords associated with username

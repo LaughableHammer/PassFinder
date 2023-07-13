@@ -1,0 +1,35 @@
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.
+DEBUG:root:Application started
+DEBUG:PassfinderLogic.accounts.accountmanager:Database Path: /Users/kesarwani_ku/Documents/GitHub/PassFinder/TextFiles/userlogindata.db
+DEBUG:PassfinderLogic.accounts.accountmanager:Database exists.

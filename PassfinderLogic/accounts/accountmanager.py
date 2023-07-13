@@ -3,6 +3,7 @@ import sqlite3
 import hashlib
 import os
 import sys
+import logging
 
 from PassfinderLogic.accounts.User import User
 
@@ -25,6 +26,8 @@ from ..config import *
 # # changing the current working directory to the path where one-file mode source files are extracted
 # os.chdir(application_path)
 
+logger = logging.getLogger(__name__)
+
 
 class AccountManager:
     """Contains all things to do with logging in, creating accounts and user accounts"""
@@ -36,10 +39,14 @@ class AccountManager:
             configuration.database_name,
         )
 
+        logger.debug(f"Database Path: {absolute_path}")
+
         if absolute_path.exists():
+            logger.debug("Database exists.")
             self.conn = sqlite3.connect(absolute_path)
             self.cur = self.conn.cursor()
         else:
+            logger.debug("Database doesn't exist.")
             self.conn = sqlite3.connect(absolute_path)
             self.cur.execute(
                 """     
