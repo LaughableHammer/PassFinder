@@ -1,4 +1,5 @@
 """Import UI elements and Logic"""
+import os
 import tkinter as tk
 import customtkinter as ctk
 
@@ -102,8 +103,8 @@ class LoginUI(Frame):
                 app.goto(
                     MainUI.MainUI(),
                 )
-                with open("TextFiles/username.txt", "w", encoding="utf-8") as file:
-                    file.write(username)
+                # Set the environment variable
+                os.environ['USERNAME'] = username
             else:
                 # Show an error message for invalid credentials
                 tk.messagebox.showerror(

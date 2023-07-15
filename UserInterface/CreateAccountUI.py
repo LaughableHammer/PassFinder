@@ -1,14 +1,12 @@
 """Import UI elements and Logic"""
-import tkinter as tk
 import re
+import os
+import tkinter as tk
 import customtkinter as ctk
 
-from UserInterface.UI import Frame, PassFinder
-from UserInterface import (
-    MainUI,
-    LoginUI,
-)
+from UserInterface import LoginUI, MainUI
 from UserInterface.ToolTip import ToolTip
+from UserInterface.UI import Frame, PassFinder
 
 
 class CreateAccountUI(Frame):
@@ -103,6 +101,9 @@ class CreateAccountUI(Frame):
             username = username_entry.get()
             password = password_entry.get()
             confirm = confirm_password.get()
+            
+            # Set the environment variable
+            os.environ['USERNAME'] = username
 
             # Check if username length is valid
             if len(username) > 25:

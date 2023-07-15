@@ -1,4 +1,5 @@
 """Import UI and Logic elements"""
+import os
 import tkinter as tk
 import customtkinter as ctk
 
@@ -34,13 +35,12 @@ class ViewPasswordsUI(Frame):
         canvas.pack(fill="x", padx=10, pady=10)
         canvas.create_line(0, 1, int(frame.winfo_width() * 0.5), 1, fill="black")
 
-        with open("TextFiles/username.txt", "r", encoding="utf-8") as file:
-            username = str(file.read())
+        username = os.environ.get('USERNAME')
 
         tk.messagebox.showwarning("Reminder", "Never share your password with anyone!")
-
-        stored_passwords = storepassword.StorePassword().get_password(username)
+        
         # Calls storepassword to retrieve all stored passwords associated with username
+        stored_passwords = storepassword.StorePassword().get_password(username)
 
         scrollable_frame = ctk.CTkScrollableFrame(master=frame)
         scrollable_frame.pack(padx=20, fill="both", expand=True)
