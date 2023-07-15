@@ -1,5 +1,7 @@
+import os
 from abc import ABC, abstractmethod
 import customtkinter as ctk
+
 from PassfinderLogic.accountmanager import AccountManager
 
 
@@ -23,7 +25,10 @@ class PassFinder:
             0,
             0,
         )  # Disable window resizing
-        self.root.iconbitmap("Icon\PassFinder.ico")
+        database_path = "Icon/PassFinder.ico"
+        absolute_path = os.path.abspath(database_path)
+        
+        self.root.iconbitmap(absolute_path)
         self.account_manager = AccountManager()
 
     def destroy_frames(self):
