@@ -1,4 +1,5 @@
 """Import UI elements and Logic"""
+import os
 import tkinter as tk
 import customtkinter as ctk
 
@@ -90,8 +91,7 @@ class StorePasswordUI:
         )
         ToolTip(app_password, "Enter password for application")
 
-        with open("TextFiles/username.txt", "r", encoding="utf-8") as file:
-            username = file.read()
+        username = os.environ.get('USERNAME')
 
         def store_password():
             """Get the name and password entered by the user and call function + validation"""

@@ -1,3 +1,4 @@
+"""Modules required for compilation and account management"""
 from dataclasses import dataclass
 import sqlite3
 import hashlib
