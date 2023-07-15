@@ -25,8 +25,6 @@ class PassFinder:
             0,
             0,
         )  # Disable window resizing
-        icon_path = "Icon/PassFinder.ico"
-        absolute_path = os.path.abspath(icon_path)
         
         self.root.iconbitmap("C:/Users/Kushaagra Kesarwani/Documents/PassFinder/Icon/PassFinder.ico")
         self.account_manager = AccountManager()

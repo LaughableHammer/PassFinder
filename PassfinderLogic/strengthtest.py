@@ -21,10 +21,10 @@ class PasswordStrengthTest:
             filename (txt): Name of the filename to get the passwords from
         """
         try:
-            with open(filename, "r") as file:
+            with open(filename, "r", encoding="utf-8") as file:
                 self.common_passwords = file.read().splitlines()
-        except Exception as e:
-            print("Error loading common passwords:", str(e))
+        except Exception as error:
+            print("Error loading common passwords:", str(error))
 
     def calculate_score(
         self,
@@ -74,10 +74,10 @@ class PasswordStrengthTest:
             filename (string): Name of the file where the common passwords are stored
         """
         try:
-            with open(filename, "r") as file:
+            with open(filename, "r", encoding="utf-8") as file:
                 self.common_passwords = file.read().splitlines()
-        except Exception as e:
-            print("Error loading common passwords:", str(e))
+        except Exception as error:
+            print("Error loading common passwords:", str(error))
 
         if password in self.common_passwords:
             self.password_match = True
@@ -96,7 +96,6 @@ class PasswordStrengthTest:
             string: The password rating and if strength is less than 100%, appends additional message
         """
         filename = "TextFiles/SeclistsTop1000000"
-        # self.load_common_passwords(filename)
 
         self.calculate_score(password)
         self.check_common_password(password, filename)

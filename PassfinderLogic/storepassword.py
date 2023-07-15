@@ -99,6 +99,15 @@ class StorePassword:
         username: str,
         app_name: str,
     ):
+        """Deletes the specified passwords
+
+        Args:
+            username (str): ensures the password is only deleted if it belongs to that username
+            app_name (str): the name of the app of which the password is being deleted
+
+        Returns:
+            bool: indicates whether the password was deleted
+        """
         self.cur.execute(
             "DElETE FROM Passwords WHERE username = ? AND app_name = ?",
             (username, app_name),
