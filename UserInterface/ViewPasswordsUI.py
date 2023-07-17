@@ -23,27 +23,62 @@ class ViewPasswordsUI(Frame):
             app (PassFinder): The root app
         """
 
-        frame = ctk.CTkFrame(master=app.root, corner_radius=15)
-        frame.pack(pady=40, padx=50, fill="both", expand=True)
+        frame = ctk.CTkFrame(
+            master=app.root,
+            corner_radius=15,
+        )
+        frame.pack(
+            pady=40,
+            padx=50,
+            fill="both",
+            expand=True,
+        )
 
         label = ctk.CTkLabel(
-            master=frame, text="Password Vault", font=("Helvetica", 28)
+            master=frame,
+            text="Password Vault",
+            font=("Helvetica", 28),
         )
-        label.pack(pady=(15, 3), padx=10)
+        label.pack(
+            pady=(15, 3),
+            padx=10,
+        )
 
-        canvas = ctk.CTkCanvas(master=frame, height=1)  # Horizontal line
-        canvas.pack(fill="x", padx=10, pady=10)
-        canvas.create_line(0, 1, int(frame.winfo_width() * 0.5), 1, fill="black")
+        canvas = ctk.CTkCanvas(
+            master=frame,
+            height=1,
+        )  # Horizontal line
+        canvas.pack(
+            fill="x",
+            padx=10,
+            pady=10,
+        )
+        canvas.create_line(
+            0,
+            1,
+            int(frame.winfo_width() * 0.5),
+            1,
+            fill="black",
+        )
 
         username = os.environ.get("USERNAME")
 
-        tk.messagebox.showwarning("Reminder", "Never share your password with anyone!")
+        tk.messagebox.showwarning(
+            "Reminder",
+            "Never share your password with anyone!",
+        )
 
         # Calls storepassword to retrieve all stored passwords associated with username
         stored_passwords = storepassword.StorePassword().get_password(username)
 
-        scrollable_frame = ctk.CTkScrollableFrame(master=frame)
-        scrollable_frame.pack(padx=20, fill="both", expand=True)
+        scrollable_frame = ctk.CTkScrollableFrame(
+            master=frame,
+        )
+        scrollable_frame.pack(
+            padx=20,
+            fill="both",
+            expand=True,
+        )
 
         if stored_passwords:
             # Logic to align the passwords side by side
@@ -69,7 +104,8 @@ class ViewPasswordsUI(Frame):
                     scrollable_frame,
                     text=truncated_name,
                     command=lambda name=app_name, pwd=password: tk.messagebox.showinfo(
-                        name, pwd
+                        name,
+                        pwd,
                     ),
                     # Pop-up message box that displays password
                 )
@@ -91,4 +127,9 @@ class ViewPasswordsUI(Frame):
             text="Go Back",
             command=lambda: app.goto(MainUI.MainUI()),
         )
-        back_button.pack(pady=10, padx=10, anchor="s", side="bottom")
+        back_button.pack(
+            pady=10,
+            padx=10,
+            anchor="s",
+            side="bottom",
+        )

@@ -11,21 +11,6 @@ class PasswordStrengthTest:
         self.password_match = False
         self.common_passwords = []
 
-    def load_common_passwords(
-        self,
-        filename: str,
-    ):
-        """loads the common password file - https://www.w3schools.com/python/python_file_open.asp
-
-        Args:
-            filename (txt): Name of the filename to get the passwords from
-        """
-        try:
-            with open(filename, "r", encoding="utf-8") as file:
-                self.common_passwords = file.read().splitlines()
-        except Exception as error:
-            print("Error loading common passwords:", str(error))
-
     def calculate_score(
         self,
         password: str,

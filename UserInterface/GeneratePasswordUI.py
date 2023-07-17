@@ -24,8 +24,16 @@ class GeneratePasswordUI(Frame):
         Args:
             app (PassFinder): The root app
         """
-        frame = ctk.CTkFrame(master=app.root, corner_radius=15)
-        frame.pack(pady=40, padx=50, fill="both", expand=True)
+        frame = ctk.CTkFrame(
+            master=app.root,
+            corner_radius=15,
+        )
+        frame.pack(
+            pady=40,
+            padx=50,
+            fill="both",
+            expand=True,
+        )
 
         # Create the title label
         label = ctk.CTkLabel(
