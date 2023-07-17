@@ -25,8 +25,10 @@ class PassFinder:
             0,
             0,
         )  # Disable window resizing
-        
-        self.root.iconbitmap("C:/Users/Kushaagra Kesarwani/Documents/PassFinder/Icon/PassFinder.ico")
+
+        self.root.iconbitmap(
+            "C:/Users/Kushaagra Kesarwani/Documents/PassFinder/Icon/PassFinder.ico"
+        )
         self.account_manager = AccountManager()
 
     def destroy_frames(self):

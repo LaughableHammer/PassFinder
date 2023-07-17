@@ -35,10 +35,10 @@ class ViewPasswordsUI(Frame):
         canvas.pack(fill="x", padx=10, pady=10)
         canvas.create_line(0, 1, int(frame.winfo_width() * 0.5), 1, fill="black")
 
-        username = os.environ.get('USERNAME')
+        username = os.environ.get("USERNAME")
 
         tk.messagebox.showwarning("Reminder", "Never share your password with anyone!")
-        
+
         # Calls storepassword to retrieve all stored passwords associated with username
         stored_passwords = storepassword.StorePassword().get_password(username)
 
@@ -55,12 +55,16 @@ class ViewPasswordsUI(Frame):
             button_width_percentage = 0.092
             screen_width = app.root.winfo_screenwidth()
             button_width = int(screen_width * button_width_percentage)
-            
+
             app_name_len = 20
 
             for app_name, password in stored_passwords:  # Iterate for every password
-                truncated_name = app_name[:app_name_len] + "..." if len(app_name) > app_name_len else app_name
-                
+                truncated_name = (
+                    app_name[:app_name_len] + "..."
+                    if len(app_name) > app_name_len
+                    else app_name
+                )
+
                 button = ctk.CTkButton(
                     scrollable_frame,
                     text=truncated_name,

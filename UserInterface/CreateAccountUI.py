@@ -83,7 +83,7 @@ class CreateAccountUI(Frame):
             pady=12,
             padx=10,
         )
-        ToolTip(password_entry, "Enter a password")
+        ToolTip(password_entry, "Enter a master password")
 
         confirm_password = ctk.CTkEntry(
             master=frame,
@@ -94,16 +94,16 @@ class CreateAccountUI(Frame):
             pady=12,
             padx=10,
         )
-        ToolTip(confirm_password, "Enter password again")
+        ToolTip(confirm_password, "Enter master password again")
 
         def create_account():
             """Take in user inputs and if valid, create an account in db"""
             username = username_entry.get()
             password = password_entry.get()
             confirm = confirm_password.get()
-            
+
             # Set the environment variable
-            os.environ['USERNAME'] = username
+            os.environ["USERNAME"] = username
 
             # Check if username length is valid
             if len(username) > 25:

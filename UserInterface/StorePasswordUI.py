@@ -91,7 +91,7 @@ class StorePasswordUI:
         )
         ToolTip(app_password, "Enter password for application")
 
-        username = os.environ.get('USERNAME')
+        username = os.environ.get("USERNAME")
 
         def store_password():
             """Get the name and password entered by the user and call function + validation"""

@@ -130,12 +130,16 @@ class PasswordStrengthUI:
             button_width_percentage = 0.088
             screen_width = app.root.winfo_screenwidth()
             button_width = int(screen_width * button_width_percentage)
-            
+
             app_name_len = 20
 
             for app_name, password in stored_passwords:  # Iterate for every password
-                truncated_name = app_name[:app_name_len] + "..." if len(app_name) > app_name_len else app_name
-                
+                truncated_name = (
+                    app_name[:app_name_len] + "..."
+                    if len(app_name) > app_name_len
+                    else app_name
+                )
+
                 button = ctk.CTkButton(
                     scrollable_frame,
                     text=truncated_name,
@@ -169,4 +173,3 @@ class PasswordStrengthUI:
             pady=12,
             padx=10,
         )
-

@@ -79,7 +79,7 @@ class LoginUI(Frame):
         # Create an entry field for the password
         password_entry = ctk.CTkEntry(
             master=frame,
-            placeholder_text="Password",
+            placeholder_text="Master password",
             show="*",
         )
         password_entry.pack(
@@ -104,7 +104,7 @@ class LoginUI(Frame):
                     MainUI.MainUI(),
                 )
                 # Set the environment variable
-                os.environ['USERNAME'] = username
+                os.environ["USERNAME"] = username
             else:
                 # Show an error message for invalid credentials
                 tk.messagebox.showerror(
