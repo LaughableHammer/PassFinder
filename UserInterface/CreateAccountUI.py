@@ -115,10 +115,6 @@ class CreateAccountUI(Frame):
                     CreateAccountUI.CreateAccountUI(),
                 )
 
-            # Save the username to a file
-            with open("TextFiles/username.txt", "w", encoding="utf-8") as file:
-                file.write(username)
-
             # Check password requirements using regular expressions
             if re.search(
                 r"\d",
@@ -142,7 +138,7 @@ class CreateAccountUI(Frame):
             else:
                 tk.messagebox.showinfo(
                     "Input Error",
-                    "Passwords needs at least 1 special character",
+                    "Password needs at least 1 special character",
                 )
                 app.goto(
                     CreateAccountUI.CreateAccountUI(),
@@ -229,7 +225,7 @@ class CreateAccountUI(Frame):
             else:
                 tk.messagebox.showerror(
                     "Input Error",
-                    "Username unavailable.",
+                    "Username or Password unavailable.",
                 )  # intentionally vague for security purposes
 
         button = ctk.CTkButton(
